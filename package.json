@@ -15,12 +15,15 @@
     "test": "npm run typecheck && npm run prettier && npm run lint && npm run jest && npm run build"
   },
   "dependencies": {
+    "@apollo/client": "3.7.2",
     "@emotion/react": "^11.10.5",
     "@mantine/core": "6.0.0",
     "@mantine/hooks": "6.0.0",
     "@tabler/icons-react": "^2.23.0",
+    "graphql": "16.6.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.20.0",

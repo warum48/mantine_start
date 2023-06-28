@@ -36,6 +36,7 @@ export function Welcome() {
 
         //</Navbar>
         <NavbarNested 
+
         px="lg" //md
         hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 280, lg: 350 }} />
       }
@@ -46,13 +47,14 @@ export function Welcome() {
           </Aside>
         </MediaQuery>
       }*/
-      footer={
-        <Footer height={60} p="md">
-          Лицензия и все прочеее
+     /* footer={
+        <Footer height={60} p="md" fixed={false}>
+          Лицензия и все прочее
         </Footer>
-      }
+      }*/
       header={
         <Header 
+        fixed={false}
         height={{ base: 80, md: 90 }} 
        // height="auto"
         p="md">

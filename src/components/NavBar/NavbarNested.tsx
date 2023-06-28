@@ -13,9 +13,20 @@ import { UserButton } from '../UserButton/UserButton';
 //import { Logo } from './Logo';
 import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
 import { Logo } from '../Logo/Logo';
+import { RoutesTypes } from 'ROUTES';
 
 const mockdata = [
-  { label: 'Главная', icon: IconGauge },
+  { label: 'Главная', icon: IconGauge, link: '/' },
+  {
+    label: 'Записаться на прием',
+    icon: IconCalendarStats,
+    link: RoutesTypes.Appointment
+   /* links: [
+      { label: 'Upcoming releases', link: '/' },
+      { label: 'Previous releases', link: '/' },
+      { label: 'Releases schedule', link: '/' },
+    ],*/
+  },
   {
     label: 'Раздел с подразделами',
     icon: IconNotes,
@@ -27,15 +38,7 @@ const mockdata = [
       { label: 'Четыре', link: '/' },
     ],
   },
-  {
-    label: 'Записаться на прием',
-    icon: IconCalendarStats,
-    links: [
-      { label: 'Upcoming releases', link: '/' },
-      { label: 'Previous releases', link: '/' },
-      { label: 'Releases schedule', link: '/' },
-    ],
-  },
+  /*
   { label: 'Analytics', icon: IconPresentationAnalytics },
   { label: 'Contracts', icon: IconFileAnalytics },
   { label: 'Settings', icon: IconAdjustments },
@@ -48,6 +51,7 @@ const mockdata = [
       { label: 'Recovery codes', link: '/' },
     ],
   },
+  */
 ];
 
 const useStyles = createStyles((theme) => ({
@@ -92,6 +96,8 @@ export function NavbarNested({...props}) {
 
   return (
     <Navbar 
+    //position={{ top: 0, left: 0 }}
+    //fixed={false}
     //height={800} width={{ sm: 300 }} p="md" className={classes.navbar}
     {...props}
    //sx={{paddingTop:0}}
@@ -112,8 +118,8 @@ export function NavbarNested({...props}) {
       <Navbar.Section className={classes.footer}>
         <UserButton
           image="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
-          name="Ann Nullpointer"
-          email="anullpointer@yahoo.com"
+          name="Анна Антонова"
+          email="anna_antonove@mail.ru"
         />
       </Navbar.Section>
     </Navbar>

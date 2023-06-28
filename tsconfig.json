@@ -16,8 +16,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@test-utils": ["./test-utils"]
-    }
+      "@test-utils": ["./test-utils"],
+      "ROUTES": ["./src/ROUTES"],
+      "_apollo": ["./src/_apollo/"],
+      "_context": ["./src/_context/"],
+    },
+   
   },
   "include": ["src", "test-utils"],
   "references": [{ "path": "./tsconfig.node.json" }]

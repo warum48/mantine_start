@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react';
 import { ColorScheme, ColorSchemeProvider, MantineProvider, MantineThemeOverride, useMantineColorScheme } from '@mantine/core';
 import { useState } from 'react';
 
@@ -5,6 +6,12 @@ import { useState } from 'react';
 export const theme: MantineThemeOverride = {
   colorScheme: 'dark',
 };*/
+
+const myTheme: MantineThemeOverride = {
+  //colorScheme: 'light',
+  primaryColor: "teal"//'orange',
+ // defaultRadius: 0,
+};
 
 
 interface ThemeProviderProps {
@@ -15,7 +22,7 @@ interface ThemeProviderProps {
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
 
-
+//const theme = //useTheme()
   const [colorScheme, setColorScheme] = useState<ColorScheme>('dark');
 
   const toggleColorScheme = (value?: ColorScheme) => {
@@ -31,7 +38,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     <MantineProvider withGlobalStyles withNormalizeCSS 
     //theme={theme}
-    theme={{ colorScheme }}
+    theme={{ colorScheme, primaryColor: myTheme.primaryColor }}
     >
       {children}
     </MantineProvider>
