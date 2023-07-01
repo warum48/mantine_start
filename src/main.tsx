@@ -6,7 +6,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(<App />);*/
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from './ThemeProvider';
-//import "_styles/index.css";
+import "./styles_override.css";
 //import "_mui/mui.css";
 ////import "_styles/reactselect.css";
 import {App } from './App';
