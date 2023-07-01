@@ -16,7 +16,7 @@ import { RoutesTypes } from 'ROUTES';
 
 //import { Execution } from "_routes/export/Execution";
 //import { ExportPictures } from "_routes/export/Pictures";
-//import { Auth } from "_components/User/Auth";
+//import { Auth } from "_routes/Auth";
 //import { LightMode } from "_components/Settings/LightMode";
 //-----------------------TYPES-------------------------
 //import { RoutesTypes } from "ROUTES";
@@ -27,6 +27,7 @@ import { GlobalProvider } from '_context'; ///ContextGlobal
 import { ApolloSettingsProvider } from '_apollo'; ///context
 import { Home } from './_routes/Home';
 import { Appointment } from './_routes/Appointment';
+import { Auth } from './_routes/Auth';
 //
 //import { Home } from "_routes/home/Home";
 //import { Reports } from "_routes/reports/Reports";
@@ -92,6 +93,10 @@ const RootWrapper = () => {
             <Route
               path={RoutesTypes.Appointment}
                element={<Appointment />}
+            />
+            <Route
+              path={RoutesTypes.Auth}
+               element={<Auth/>}
             />
           </Route>
         </Routes>

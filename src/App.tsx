@@ -23,6 +23,7 @@ import {
   useMantineTheme,
   Image
 } from '@mantine/core';
+import {FastCommentsCommentWidget} from 'fastcomments-react'
 
 import React from 'react';
 import { Group, ActionIcon, useMantineColorScheme, Box, rem } from '@mantine/core';
@@ -39,9 +40,13 @@ export function App() {
     <AppShell
       styles={{
         main: {
-          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+         // background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+         background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'white',
+         paddingLeft: 'calc(var(--mantine-navbar-width, 0) )' //+ 1rem
         },
       }}
+      //padding='0'
+      
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       navbar={
@@ -107,10 +112,28 @@ export function App() {
       <Box 
       mx="xl"   
       my="-0.125rem"
+      pb="xl"
+      sx={{
+     // background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'white',
+      }}
       >
       <Outlet/>
       </Box>
-
+      <Box 
+     // mx="xl"   
+     ml="-1px"
+     pl='1px'
+      my="-0.125rem"
+      sx={{
+        background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        boxShadow:      'inset 0px 4px 3px rgba(50, 50, 50, 0.25)',
+        borderTop: '1px solid #202020'
+      }}
+      >
+        <Box p='md' pt='xl'><i>Здесь вы можете комментировать процесс разработки страницы:</i></Box>
+       
+      <FastCommentsCommentWidget tenantId="2Nf0TURX_Hp" key={"comm"+theme.colorScheme}/>
+      </Box>
     </AppShell>
   );
 }

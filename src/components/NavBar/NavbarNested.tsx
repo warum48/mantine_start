@@ -27,6 +27,14 @@ const mockdata = [
       { label: 'Releases schedule', link: '/' },
     ],*/
   },
+
+  {
+    label: 'Личный кабинет / регистрация',
+    icon: IconAdjustments,
+    link: RoutesTypes.Auth
+  }
+  ,
+
   {
     label: 'Раздел с подразделами',
     icon: IconNotes,

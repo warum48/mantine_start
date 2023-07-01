@@ -13,7 +13,7 @@ export const Home = () => {
         <List.Item> Балансы/внести оплату или аванс</List.Item>
         <List.Item>ПОЛУЧИТЬ ОН ЛАЙН КОНСУЛЬТАЦИЮ </List.Item>
       </List>
-      <FastCommentsCommentWidget tenantId="2Nf0TURX_Hp" />
+ 
     </>
   );
 };
