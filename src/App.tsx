@@ -51,6 +51,7 @@ export function App() {
           // background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
           background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'white',
           paddingLeft: 'calc(var(--mantine-navbar-width, 0) )', //+ 1rem
+          paddingTop: 'calc(var(--mantine-header-height, 0)  + 0.5rem)', //
         },
       }}
       //padding='0'
@@ -62,7 +63,7 @@ export function App() {
 
         //</Navbar>
         <NavbarNested
-          px="xl" //md
+          px="md" //"xl" //md
           hiddenBreakpoint="sm"
           hidden={!opened}
           width={{ sm: 280, lg: 350 }}
@@ -85,7 +86,7 @@ export function App() {
           fixed={false}
           height={{ base: 80, md: 90 }}
           // height="auto"
-          p="md"
+          p="xl"
         >
           <Box
             sx={{
@@ -139,14 +140,14 @@ export function App() {
                 Контактный центр 24 часа
               </Text>
             </Box>
-
+{/*
             <Box
             // sx={{marginLeft:'100%'}}
             >
               <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
                 {colorScheme === 'dark' ? <IconSun size="1rem" /> : <IconMoonStars size="1rem" />}
               </ActionIcon>
-            </Box>
+            </Box> */}
           </Box>
         </Header>
       }
@@ -155,11 +156,7 @@ export function App() {
         mx="xl"
         my="-0.125rem"
         pb="xl"
-        sx={
-          {
-            // background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'white',
-          }
-        }
+        
       >
         <Outlet />
       </Box>

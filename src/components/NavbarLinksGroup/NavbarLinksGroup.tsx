@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink as RouterLink, useSearchParams } from "react-router-dom";
+import { NavLink as RouterLink, useSearchParams } from 'react-router-dom';
 import {
   Group,
   Box,
@@ -44,6 +44,11 @@ const useStyles = createStyles((theme) => ({
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
+    '&.active button div div div div': {
+        fontWeight: 700,
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+      },
   },
 
   level1link: {
@@ -56,17 +61,22 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.sm,
     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
     //borderLeft: `${rem(1)} solid ${
-   //   theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
+    //   theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     //}`,
 
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
-    '&.active': {
+    '&.active ': {
+      fontWeight: 700,
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    },
+    '&.active  div': {
         fontWeight: 700,
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
-        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+       // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+       // color: theme.colorScheme === 'dark' ? theme.white : theme.black,
       },
   },
 
@@ -80,10 +90,10 @@ interface LinksGroupProps {
   label: string;
   initiallyOpened?: boolean;
   links?: { label: string; link: string }[];
-  link?:string;
+  link?: string;
 }
 
-export function LinksGroup({ icon: Icon, label, initiallyOpened, links , link }: LinksGroupProps) {
+export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: LinksGroupProps) {
   const { classes, theme } = useStyles();
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
@@ -102,27 +112,57 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links , link }:
 
   return (
     <>
-      <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
-        <Group position="apart" spacing={0}>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <ThemeIcon variant="light" size={30}>
-              <Icon size="1.1rem" />
-            </ThemeIcon>
-            <Box ml="md">{link? <RouterLink to={link} className={classes.level1link}>{label}</RouterLink> :label }</Box>
-          </Box>
-          {hasLinks && (
-            <ChevronIcon
-              className={classes.chevron}
-              size="1rem"
-              stroke={1.5}
-              style={{
-                transform: opened ? `rotate(${theme.dir === 'rtl' ? -90 : 90}deg)` : 'none',
-              }}
-            />
-          )}
-        </Group>
-      </UnstyledButton>
-      {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
+      {link ? (
+        <RouterLink to={link} className={classes.level1link}>
+          <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
+            <Group position="apart" spacing={0}>
+              <Box sx={{ display: 'flex', alignItems: 'center' , paddingLeft:'0.5rem'}}>
+                <ThemeIcon variant="light" size={30}>
+                  <Icon size="1.1rem" />
+                </ThemeIcon>
+                <Box ml="md">{label}</Box>
+              </Box>
+              {hasLinks && (
+                <ChevronIcon
+                  className={classes.chevron}
+                  size="1rem"
+                  stroke={1.5}
+                  style={{
+                    transform: opened ? `rotate(${theme.dir === 'rtl' ? -90 : 90}deg)` : 'none',
+                  }}
+                />
+              )}
+            </Group>
+          </UnstyledButton>
+
+          {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
+        </RouterLink>
+      ) : (
+        <>
+          <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
+            <Group position="apart" spacing={0}>
+              <Box sx={{ display: 'flex', alignItems: 'center',  paddingLeft:'0.5rem' }}>
+                <ThemeIcon variant="light" size={30}>
+                  <Icon size="1.1rem" />
+                </ThemeIcon>
+                <Box ml="md">{label}</Box>
+              </Box>
+              {hasLinks && (
+                <ChevronIcon
+                  className={classes.chevron}
+                  size="1rem"
+                  stroke={1.5}
+                  style={{
+                    transform: opened ? `rotate(${theme.dir === 'rtl' ? -90 : 90}deg)` : 'none',
+                  }}
+                />
+              )}
+            </Group>
+          </UnstyledButton>
+
+          {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
+        </>
+      )}
     </>
   );
 }
