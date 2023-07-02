@@ -30,6 +30,9 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.05,
     maxWidth: rem(500),
     fontSize: rem(36),
+   // zIndex:100,
+   position:'relative',
+    display:'block',
 
     [theme.fn.smallerThan('md')]: {
       maxWidth: '100%',
@@ -104,14 +107,18 @@ export const Home = () => {
             // src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
             radius="md"
             sx={{
-              height: 480, //SECONDARY_COL_HEIGHT,
+              height: 420, //SECONDARY_COL_HEIGHT,
               marginBottom: '1rem',
               padding: '5rem',
-              paddingTop: '5rem',
+              paddingTop: '4rem',
               //opacity:'.3' ,transform: 'scaleX(-1)', backgroundBlendMode: 'saturation', linearGradient:'(black, black)', filter: 'grayscale(100%);'
             }}
             //height={SECONDARY_COL_HEIGHT}
           >
+            <Box sx={{position:'absolute', top:0, left:0, bottom:0, right:0, 
+            //zIndex:1,
+            background:'linear-gradient(114deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.60) 42%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)'//'white'
+            }}></Box>
             <Title className={classes.title}>
               {' '}
               <Text
@@ -122,7 +129,7 @@ export const Home = () => {
               >
                 Вирилис -
               </Text>{' '}
-              широкий спект медицинских услуг
+              широкий спектр медицинских услуг
             </Title>
 
             <Text className={classes.description} mt={30}>
@@ -202,7 +209,7 @@ export const Home = () => {
 
                   <Button
               variant="gradient"
-              gradient={{ from: "#008275", to: "#029f90" }}
+              gradient={{ from: "#008275", to: "#0dab5f" }}
               size="md"
               //className={classes.control}
               mt={40}
