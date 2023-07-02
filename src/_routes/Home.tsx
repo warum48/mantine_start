@@ -111,6 +111,8 @@ export const Home = () => {
               marginBottom: '1rem',
               padding: '5rem',
               paddingTop: '4rem',
+             // overflow:'hidden'
+              position:'relative'
               //opacity:'.3' ,transform: 'scaleX(-1)', backgroundBlendMode: 'saturation', linearGradient:'(black, black)', filter: 'grayscale(100%);'
             }}
             //height={SECONDARY_COL_HEIGHT}
