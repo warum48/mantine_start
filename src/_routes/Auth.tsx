@@ -54,7 +54,7 @@ import {
         // mx="xl"
         ml="-1px"
         pl="1px"
-        my="-0.125rem"
+        mt="xl"
         sx={{
           background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
           boxShadow: 'inset 0px 4px 3px rgba(50, 50, 50, 0.25)',
