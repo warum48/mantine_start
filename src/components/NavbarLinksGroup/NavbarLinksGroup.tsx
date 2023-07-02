@@ -135,13 +135,13 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
             </Group>
           </UnstyledButton>
 
-          {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
+          {hasLinks ? <Collapse in={opened} pl="xs">{items}</Collapse> : null}
         </RouterLink>
       ) : (
         <>
           <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
             <Group position="apart" spacing={0}>
-              <Box sx={{ display: 'flex', alignItems: 'center',  paddingLeft:'0.5rem' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', paddingLeft:'0.5rem'  }}>
                 <ThemeIcon variant="light" size={30}>
                   <Icon size="1.1rem" />
                 </ThemeIcon>
@@ -154,13 +154,14 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
                   stroke={1.5}
                   style={{
                     transform: opened ? `rotate(${theme.dir === 'rtl' ? -90 : 90}deg)` : 'none',
+                    
                   }}
                 />
               )}
             </Group>
           </UnstyledButton>
 
-          {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
+          {hasLinks ? <Collapse in={opened} pl="xs">{items}</Collapse> : null}
         </>
       )}
     </>
@@ -182,7 +183,7 @@ export function NavbarLinksGroup() {
     <Box
       sx={(theme) => ({
         minHeight: rem(220),
-        padding: theme.spacing.md,
+        padding: theme.spacing.md, //md
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
       })}
     >
