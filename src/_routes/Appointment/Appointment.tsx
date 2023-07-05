@@ -1,5 +1,15 @@
 import { useState } from 'react';
-import { Stepper, Button, Group, TextInput, PasswordInput, Code, Box, useMantineTheme } from '@mantine/core';
+import {
+  Stepper,
+  Button,
+  Group,
+  TextInput,
+  PasswordInput,
+  Code,
+  Box,
+  useMantineTheme,
+  Center,
+} from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { FastCommentsCommentWidget } from 'fastcomments-react';
 
@@ -21,11 +31,8 @@ export function Appointment() {
       if (active === 0) {
         return {
           username:
-            values.username.trim().length < 2
-              ? 'Имя должно содержать хотя бы 2 буквы'
-              : null,
-          password:
-            values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null,
+            values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
+          password: values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null,
         };
       }
 
@@ -52,31 +59,38 @@ export function Appointment() {
 
   return (
     <>
-    <h4> Записаться на прием </h4>
+      <h4> Записаться на прием </h4>
       <Stepper active={active} breakpoint="sm">
         <Stepper.Step label="Шаг 1" description="Профайл">
-          <TextInput label="Аккаунт пользователя" placeholder="Аккаунт" {...form.getInputProps('username')} />
-          <PasswordInput
-            mt="md"
-            label="Пароль"
-            placeholder="Пароль"
-            {...form.getInputProps('password')}
-          />
+          <Center>
+            <Box maw={400} mx="auto" w={'100%'} mt="xl">
+              <TextInput
+                label="Аккаунт пользователя"
+                placeholder="Аккаунт"
+                {...form.getInputProps('username')}
+              />
+              <PasswordInput
+                mt="md"
+                label="Пароль"
+                placeholder="Пароль"
+                {...form.getInputProps('password')}
+              />
+            </Box>
+          </Center>
         </Stepper.Step>
 
         <Stepper.Step label="Шаг 2" description="Персональная информация">
+        <Box maw={400} mx="auto" w={'100%'} mt="xl">
           <TextInput label="Имя" placeholder="Имя" {...form.getInputProps('name')} />
           <TextInput mt="md" label="Email" placeholder="Email" {...form.getInputProps('email')} />
+          </Box>
         </Stepper.Step>
 
         <Stepper.Step label="Завершение" description="Данные приема">
+        <Box maw={400} mx="auto" w={'100%'} mt="xl">
           <TextInput label="..." placeholder="..." {...form.getInputProps('website')} />
-          <TextInput
-            mt="md"
-            label="..."
-            placeholder="..."
-            {...form.getInputProps('github')}
-          />
+          <TextInput mt="md" label="..." placeholder="..." {...form.getInputProps('github')} />
+          </Box>
         </Stepper.Step>
         <Stepper.Completed>
           Готово! Данные формы:
@@ -86,7 +100,7 @@ export function Appointment() {
         </Stepper.Completed>
       </Stepper>
 
-      <Group position="right" mt="xl">
+      <Group position="center" mt="xl">
         {active !== 0 && (
           <Button variant="default" onClick={prevStep}>
             Назад
