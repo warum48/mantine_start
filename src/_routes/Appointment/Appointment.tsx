@@ -59,6 +59,7 @@ export function Appointment() {
 
   return (
     <>
+    <Box maw={1300} mx="auto" w={'100%'} mt="xl">
       <h4> Записаться на прием </h4>
       <Stepper active={active} breakpoint="sm">
         <Stepper.Step label="Шаг 1" description="Профайл">
@@ -102,11 +103,27 @@ export function Appointment() {
 
       <Group position="center" mt="xl">
         {active !== 0 && (
-          <Button variant="default" onClick={prevStep}>
+          //<Button variant="default" onClick={prevStep}>
+          <Button
+              variant="gradient"
+              gradient={{ from: "#01868a", to: "#0dab5f" }}
+              size="md"
+             // size="xl"
+              //className={classes.control}
+             // mt={40}
+              sx={{ borderRadius: '100px' }}
+              onClick={prevStep}
+            >
             Назад
           </Button>
         )}
-        {active !== 3 && <Button onClick={nextStep}>Дальше</Button>}
+        {active !== 3 && 
+        <Button  variant="gradient"
+        gradient={{ from: 'pink', to: "#ff3ebb" }}
+        size="md"
+        //className={classes.control}
+        //mt={40}
+        sx={{ borderRadius: '100px' }}onClick={nextStep}>Дальше</Button>}
       </Group>
 
       <Box
@@ -125,6 +142,7 @@ export function Appointment() {
 
           <FastCommentsCommentWidget tenantId="2Nf0TURX_Hp" key={'comm' + theme.colorScheme} />
         </Box>
+      </Box>
       </Box>
     </>
   );

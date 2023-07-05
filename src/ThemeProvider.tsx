@@ -44,7 +44,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     //theme={theme}
     theme={{ colorScheme, 
       colors: {
-        oceanBlue: ['#cef1f6', '#9ce5ee', '#7bf0ea', '#6defe6', '#30dcdf', '#028375', '#028375', '#028375', '#028375', '#028375'],
+        oceanBlue: ['#cef1f6', '#9ce5ee', '#7bf0ea', '#6defe6', '#30dcdf', '#028375', '#0f9d8c', '#0a9080', '#089181', '#059080'],
       },
       primaryColor: 'oceanBlue'
       //primaryColor: myTheme.colors?.oceanBlue//'ocean-blue'

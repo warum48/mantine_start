@@ -38,10 +38,13 @@ import {
 } from '@tabler/icons-react';
 import { NavbarNested } from './components/NavBar/NavbarNested';
 import { Outlet } from 'react-router-dom';
+import { DemoGuestSwitcher } from './components/Debug/GuestSwitch';
+import { useCookies } from 'react-cookie';
 //import { Logo } from './_logo';
 
 export function App() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['nekot']);
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   return (
@@ -62,12 +65,14 @@ export function App() {
         //<Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
 
         //</Navbar>
-        <NavbarNested
+         cookieToken.nekot  ?
+
+       ( <NavbarNested
           px="md" //"xl" //md
           hiddenBreakpoint="sm"
           hidden={!opened}
           width={{ sm: 280, lg: 350 }}
-        />
+        />) : undefined
       }
       /*aside={
         <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
@@ -140,6 +145,8 @@ export function App() {
                 Контактный центр 24 часа
               </Text>
             </Box>
+
+            <DemoGuestSwitcher/>
 {/*
             <Box
             // sx={{marginLeft:'100%'}}
