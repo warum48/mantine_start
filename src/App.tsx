@@ -118,7 +118,7 @@ export function App() {
             />
 
             
-
+<MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
             <Box>
               <Title order={3} color="pink">
                 +7(812)424-64-74
@@ -126,7 +126,7 @@ export function App() {
               <Text fw={500} color="pink" fz="sm" sx={{ marginLeft: '0.33rem' }}>
                 Контактный центр 24 часа
               </Text>
-            </Box>
+            </Box></MediaQuery>
 
             <Box><u>Вход</u> / <u>Регистрация</u></Box>
 
