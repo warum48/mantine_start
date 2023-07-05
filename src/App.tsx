@@ -44,7 +44,7 @@ import { useCookies } from 'react-cookie';
 
 export function App() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['nekot']);
+  const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   return (
@@ -65,7 +65,7 @@ export function App() {
         //<Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
 
         //</Navbar>
-         cookieToken.nekot  ?
+         cookieToken.mednekot  ?
 
        ( <NavbarNested
           px="md" //"xl" //md
@@ -117,25 +117,7 @@ export function App() {
               src="https://virilisgroup.ru/wp-content/themes/virilisgroup_grad/assets/img/logo_30.png"
             />
 
-            <TextInput
-              icon={<IconSearch size="1.1rem" stroke={1.5} />}
-              radius="xl"
-              size="md"
-              width="400px"
-              rightSection={
-                <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
-                  {theme.dir === 'ltr' ? (
-                    <IconArrowRight size="1.1rem" stroke={1.5} />
-                  ) : (
-                    <IconArrowLeft size="1.1rem" stroke={1.5} />
-                  )}
-                </ActionIcon>
-              }
-              placeholder="Поиск услуг и врачей"
-              rightSectionWidth={42}
-              sx={{ border: theme.colors.oceanBlue[8], width: '500px' }}
-              // {...props}
-            />
+            
 
             <Box>
               <Title order={3} color="pink">
@@ -145,6 +127,8 @@ export function App() {
                 Контактный центр 24 часа
               </Text>
             </Box>
+
+            <Box><u>Вход</u> / <u>Регистрация</u></Box>
 
             <DemoGuestSwitcher/>
 {/*

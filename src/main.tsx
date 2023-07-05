@@ -55,15 +55,15 @@ export type Foo = {
 
 const RootWrapper = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  // const [cookies, setCookie] = useCookies(["nekot"]);
+  // const [cookies, setCookie] = useCookies(["mednekot"]);
   //console.log('0704');
   //useEffect(() => {
-  //console.log("cookies", cookies.nekot);
+  //console.log("cookies", cookies.mednekot);
   //}, [cookies]);
 
   return (
     <>
-      {false ? ( //!cookies.nekot ? ( // !isLoggedIn  //cookies.nekot
+      {false ? ( //!cookies.mednekot ? ( // !isLoggedIn  //cookies.mednekot
         <>
           не авторизован
           {/*

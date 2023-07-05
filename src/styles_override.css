@@ -1,3 +1,9 @@
 .mantine-TextInput-input{
     border-color:#959393;
 }
+
+/*mantine-InputWrapper-label */
+.mantine-RadioGroup-label {
+    font-size:1rem;
+    font-weight: 300;
+}

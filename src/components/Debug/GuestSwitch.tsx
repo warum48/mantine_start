@@ -4,17 +4,17 @@ import { CookiesProvider, useCookies } from 'react-cookie';
 
 export function DemoGuestSwitcher() {
   const [checked, setChecked] = useState(false);
-  const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['nekot']);
-  // const [cookies, setCookie] = useCookies(["nekot"]);
+  const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
+  // const [cookies, setCookie] = useCookies(["mednekot"]);
 
   useEffect(() => {
     if (checked) {
       var d = new Date();
       d.setFullYear(d.getFullYear() + 100);
-      setCookieToken('nekot', '666', { path: '/', expires: d });
-      // setCookieToken("nekot", data.login?.token, { path: "/", expires: d });
+      setCookieToken('mednekot', '666', { path: '/', expires: d });
+      // setCookieToken("mednekot", data.login?.token, { path: "/", expires: d });
     } else {
-      removeCookieToken('nekot', { path: '/' });
+      removeCookieToken('mednekot', { path: '/' });
     }
   }, [checked]);
 

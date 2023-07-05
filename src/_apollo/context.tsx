@@ -27,7 +27,7 @@ type Props = {
 
 //--------------component-----------
 export const ApolloSettingsProvider = ({ children }: Props) => {
-  //!!const [cookies, setCookie] = useCookies(["nekot"]);
+  //!!const [cookies, setCookie] = useCookies(["mednekot"]);
 
   //!!const { pathtoserver } = React.useContext(GlobalContext);
   // ^ this causes filters refetching (and, highly likely, may be not just filters)
@@ -54,7 +54,7 @@ export const ApolloSettingsProvider = ({ children }: Props) => {
         mode: "cors", // no-cors, *cors, same-origin //'*cors'//
       },
       headers: {
-        Authorization: "Bearer ", //+ cookies.nekot, //token,
+        Authorization: "Bearer ", //+ cookies.mednekot, //token,
         "Access-Control-Allow-Origin": "*",
       }, //localStorage.getItem('token'),*/
     }),
