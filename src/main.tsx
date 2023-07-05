@@ -25,9 +25,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //
 import { GlobalProvider } from '_context'; ///ContextGlobal
 import { ApolloSettingsProvider } from '_apollo'; ///context
-import { Home } from './_routes/Home';
-import { Appointment } from './_routes/Appointment';
-import { Auth } from './_routes/Auth';
+import { Home } from './_routes/Home/Home';
+import { Appointment } from './_routes/Appointment/Appointment';
+import { Auth } from './_routes/Auth/Auth';
 //
 //import { Home } from "_routes/home/Home";
 //import { Reports } from "_routes/reports/Reports";

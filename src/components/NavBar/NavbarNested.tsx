@@ -38,7 +38,7 @@ const mockdata = [
   {
     label: 'Раздел с подразделами',
     icon: IconNotes,
-    initiallyOpened: true,
+    initiallyOpened: false,
     links: [
       { label: 'Один', link: '/' },
       { label: 'Два', link: '/' },

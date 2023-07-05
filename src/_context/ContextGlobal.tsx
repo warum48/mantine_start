@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 /*import {useSearchParamsService} from "_utilslib";
 import type { TSearchParamsService } from "_utilslib";
 import { useQuery } from "@apollo/client";
@@ -13,10 +14,11 @@ interface IContext {
   token: string; //авторизация
   setToken: React.Dispatch<React.SetStateAction<string>>;
   pathtoserver:string;
+  isDebug: boolean;
 /*  SearchParamsService: TSearchParamsService;  //много функций
   
   UpdatingQueryService: any;
-  isDebug: boolean;
+  
   setIsDebug: React.Dispatch<React.SetStateAction<boolean>>;*/
 }
 
@@ -30,7 +32,11 @@ type Props = {
 
 export const GlobalProvider = ({ children }: Props) => {
   const [token, setToken] = React.useState("");
- /* const [isDebug, setIsDebug] = useState<boolean>(false);
+  const [isDebug, setIsDebug] = useState<boolean>(false);
+  const location = useLocation();
+  console.log('location', location);
+  console.log('window.location.origin', window.location.origin);
+  /*
   const  {SearchParamsService} = useSearchParamsService();
   const  {UpdatingQueryService} = useUpdatingQuery(GET_LINK_ZIP_FILE, exportImagesZipFileNameVar, exportImagesZipLinkVar );
 */
@@ -46,6 +52,11 @@ export const GlobalProvider = ({ children }: Props) => {
     console.log(e);
   }
 
+  useEffect(()=>{
+    if(window.location.origin.includes('localhost')){
+      setIsDebug(true);
+    }
+  },[])
 
 
 
@@ -53,8 +64,8 @@ export const GlobalProvider = ({ children }: Props) => {
     token,
     setToken,
     pathtoserver,
-   /* isDebug,
-    setIsDebug,
+    isDebug,
+   /* setIsDebug,
     
     SearchParamsService,
     

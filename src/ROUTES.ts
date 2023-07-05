@@ -1,4 +1,4 @@
-import { Appointment } from "./_routes/Appointment";
+import { Appointment } from "./_routes/Appointment/Appointment";
 
 /**
  * Все пути надо объявлять здесь и обращаться к ним через RoutesTypes.<path> чтобы был единый источник правды и не было опечаток 

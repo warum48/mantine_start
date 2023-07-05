@@ -25,6 +25,7 @@ import {
       <Container size={420} my={40}>
         <Title
           align="center"
+          variant="h4"
           sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900 })}
         >
           Добро пожаловать!

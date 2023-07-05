@@ -1,13 +1,92 @@
 import * as React from 'react';
-import {FastCommentsCommentWidget} from 'fastcomments-react'
-import { Box, useMantineTheme } from '@mantine/core';
+import { FastCommentsCommentWidget } from 'fastcomments-react';
+import { Box, Button, Group, Stepper, TextInput, useMantineTheme } from '@mantine/core';
+import { useState } from 'react';
+import { nameVar } from '../../_apollo/state/Registration';
+import makeVarPersisted from '../../utils/ApolloMakeVarPersisted';
+import { useReactiveVar } from '@apollo/client';
+import { Debugger } from '../../components/Debug/Debugger';
+import { FormStep1 } from './components/FormStep1';
+import { InputApolloPersist } from './components/InputApolloPersist';
 
 export const Appointment = () => {
-    const theme = useMantineTheme();
-    return (
-        <>
-       <h4> Appointment </h4>
-       <Box
+  const theme = useMantineTheme();
+
+  const [active, setActive] = useState(0);
+  const [highestStepVisited, setHighestStepVisited] = useState(active);
+
+  const persistedNameVar = makeVarPersisted<string | undefined>(undefined, 'nameVar');
+  const nameVar_re = useReactiveVar(nameVar);
+
+  const handleStepChange = (nextStep: number) => {
+    const isOutOfBounds = nextStep > 3 || nextStep < 0;
+
+    if (isOutOfBounds) {
+      return;
+    }
+
+    setActive(nextStep);
+    setHighestStepVisited((hSC: any) => Math.max(hSC, nextStep));
+  };
+
+  const updateName = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    persistedNameVar(e.currentTarget.value);
+    nameVar(e.currentTarget.value);
+  };
+
+  // Allow the user to freely go back and forth between visited steps.
+  const shouldAllowSelectStep = (step: number) => highestStepVisited >= step && active !== step;
+  return (
+    <>
+      <h4> Записаться на прием </h4>
+
+      <Stepper active={active} onStepClick={setActive} breakpoint="sm">
+        <Stepper.Step
+          label="Шаг 1"
+          description="Выбор "
+          allowStepSelect={shouldAllowSelectStep(0)}
+        >
+          <Box>Шаг 1: Выбор </Box>
+          {/*    <TextInput
+     // rightSection={rightSection}
+      label="Введите ваше настоящее имя"
+      placeholder="Ваше имя"
+      withAsterisk
+      onChange={updateName}
+    />
+  */}
+
+          <FormStep1 />
+        </Stepper.Step>
+        <Stepper.Step
+          label="Шаг 2"
+          description="Выбор 2"
+          allowStepSelect={shouldAllowSelectStep(1)}
+        >
+          Шаг 2: Выбор 2
+         {/* <InputApolloPersist/> */}
+        </Stepper.Step>
+        <Stepper.Step label="Шаг 3" description="Готово" allowStepSelect={shouldAllowSelectStep(2)}>
+          Шаг 3: Выбор 3
+        </Stepper.Step>
+
+        <Stepper.Completed>Готово</Stepper.Completed>
+      </Stepper>
+
+      <Group position="center" mt="xl">
+        <Button variant="default" onClick={() => handleStepChange(active - 1)}>
+          Назад
+        </Button>
+        <Button onClick={() => handleStepChange(active + 1)}>Далее</Button>
+      </Group>
+
+      <Debugger>
+        <Box>nameVar: {nameVar()}</Box>
+        <Box>persistedNameVar: {persistedNameVar()}</Box>
+        <Box>nameVar_re: {nameVar_re}</Box>
+      </Debugger>
+
+      <Box
         // mx="xl"
         ml="-1px"
         pl="1px"
@@ -24,9 +103,9 @@ export const Appointment = () => {
           <FastCommentsCommentWidget tenantId="2Nf0TURX_Hp" key={'comm' + theme.colorScheme} />
         </Box>
       </Box>
-       </>
-    )
-}
+    </>
+  );
+};
 
 /*
 Евгений, доброго дня! 
