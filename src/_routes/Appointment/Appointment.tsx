@@ -64,13 +64,13 @@ const useStyles = createStyles((theme) => ({
   },
 
   title3: {
-    color: theme.colors.gray[7], //theme.white,
+    color: theme.colors.gray[8], //theme.white,
 
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 400,
+    fontWeight: 600,
     lineHeight: 1.05,
-    maxWidth: rem(300),
-    fontSize: '1rem', //rem(24),
+    maxWidth: rem(600),
+    fontSize: '0.875rem', //rem(24),
     // zIndex:100,
     position: 'relative',
     display: 'block',
@@ -295,7 +295,7 @@ export function Appointment() {
                  
                   <Group spacing="xs">
                     {uslAr.map((item: string, index: number) => (
-                      <Button variant="default" compact sx={{fontWeight:400}}>{item}</Button>
+                      <Button variant="default" compact sx={{fontWeight:300}}>{item}</Button>
                     ))}
                   </Group>
                   <Space h="xxs" /> 
