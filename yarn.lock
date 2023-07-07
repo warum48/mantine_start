@@ -1452,6 +1452,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/dates@npm:^6.0.16":
+  version: 6.0.16
+  resolution: "@mantine/dates@npm:6.0.16"
+  dependencies:
+    "@mantine/utils": 6.0.16
+  peerDependencies:
+    "@mantine/core": 6.0.16
+    "@mantine/hooks": 6.0.16
+    dayjs: ">=1.0.0"
+    react: ">=16.8.0"
+  checksum: e196f24f69eabd388c3dc1991d6571719bea86f4dfb3bb3082367890b558c8c2f6805d4a12a0a98c3e07cb4c8003ba2c666b3157f4b483a90a532d373cb066e3
+  languageName: node
+  linkType: hard
+
 "@mantine/form@npm:^6.0.16":
   version: 6.0.16
   resolution: "@mantine/form@npm:6.0.16"
@@ -1493,6 +1507,15 @@ __metadata:
   peerDependencies:
     react: ">=16.8.0"
   checksum: a0f876ebb910ccebc6bbeedb093c14fe22c319d08d8504be6e6085f2e935f3aad8fc9cb1e0ede182c762a03a35e02618cf304ba3ba556a4ba3951945cf8cfc56
+  languageName: node
+  linkType: hard
+
+"@mantine/utils@npm:6.0.16":
+  version: 6.0.16
+  resolution: "@mantine/utils@npm:6.0.16"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: dc9e6690497fdc769cc4abaaa6152c6ed03408d0e1e8429d39ff6b084e03a525abe3b2bfcbe8a4fa69f5dd88a7e7743859b91811b8aa1808195549f6d803006d
   languageName: node
   linkType: hard
 
@@ -3004,6 +3027,13 @@ __metadata:
     whatwg-mimetype: ^3.0.0
     whatwg-url: ^11.0.0
   checksum: 033fc3dd0fba6d24bc9a024ddcf9923691dd24f90a3d26f6545d6a2f71ec6956f93462f2cdf2183cc46f10dc01ed3bcb36731a8208456eb1a08147e571fe2a76
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.11.9":
+  version: 1.11.9
+  resolution: "dayjs@npm:1.11.9"
+  checksum: a4844d83dc87f921348bb9b1b93af851c51e6f71fa259604809cfe1b49d1230e6b0212dab44d1cb01994c096ad3a77ea1cf18fa55154da6efcc9d3610526ac38
   languageName: node
   linkType: hard
 
@@ -5647,6 +5677,7 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.11.0
     "@mantine/core": 6.0.0
+    "@mantine/dates": ^6.0.16
     "@mantine/form": ^6.0.16
     "@mantine/hooks": 6.0.0
     "@tabler/icons-react": ^2.23.0
@@ -5661,6 +5692,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.50.0
     "@typescript-eslint/parser": ^5.50.0
     "@vitejs/plugin-react": ^3.1.0
+    dayjs: ^1.11.9
     eslint: ^8.33.0
     eslint-config-airbnb: 19.0.4
     eslint-config-airbnb-typescript: ^17.0.0

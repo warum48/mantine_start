@@ -18,6 +18,8 @@ import {
   ActionIcon,
   Space,
   Select,
+  Grid,
+  Checkbox,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { FastCommentsCommentWidget } from 'fastcomments-react';
@@ -76,20 +78,31 @@ const useStyles = createStyles((theme) => ({
     display: 'block',
 
     [theme.fn.smallerThan('md')]: {
-      maxWidth: '100%',
-      fontSize: rem(20),
-      lineHeight: 1.15,
+      // maxWidth: '100%',
+      // fontSize: rem(20),
+      // lineHeight: 1.15,
     },
   },
 }));
 
 export function Appointment() {
   const [active, setActive] = useState(0);
+  const [highestStepVisited, setHighestStepVisited] = useState(active);
   //const theme = useMantineTheme();
   const { classes, theme } = useStyles();
 
   const [valueType, setValueType] = useState('react');
   const [valueAge, setValueAge] = useState('age3');
+  const [valueAdress, setValueAdress] = useState<string[]>([]);
+
+  const addressAr = [
+    "Ленинский пр., д. 108, корп. 1",
+    "Проспект Ветеранов · 1,9 км",
+    "Ленинский проспект · 2,3 км",
+    "Автово · 2,7 км",
+    "Ленинский пр., д. 108, корп. 1",
+    "Проспект Ветеранов · 1,9 км",
+  ]
 
   const profAr = [
     'Терапевт',
@@ -102,10 +115,34 @@ export function Appointment() {
     'Стоматолог-терапевт',
   ];
   const uslAr = [
-    "ЛФК", "Вакцинация", "УЗИ", "ЭКГ", "Массаж", "Перевязка",  "Анализы", "Прогревание", "Введение лекарственных препаратов",
-    "ЛФК", "Вакцинация", "УЗИ", "ЭКГ", "Массаж", "Перевязка",  "Анализы", "Прогревание", "Введение лекарственных препаратов",
-    "ЛФК", "Вакцинация", "УЗИ", "ЭКГ", "Массаж", "Перевязка",  "Анализы", "Прогревание", "Введение лекарственных препаратов",
-  //"укол",
+    'ЛФК',
+    'Вакцинация',
+    'УЗИ',
+    'ЭКГ',
+    'Массаж',
+    'Перевязка',
+    'Анализы',
+    'Прогревание',
+    'Введение лекарственных препаратов',
+    'ЛФК',
+    'Вакцинация',
+    'УЗИ',
+    'ЭКГ',
+    'Массаж',
+    'Перевязка',
+    'Анализы',
+    'Прогревание',
+    'Введение лекарственных препаратов',
+    'ЛФК',
+    'Вакцинация',
+    'УЗИ',
+    'ЭКГ',
+    'Массаж',
+    'Перевязка',
+    'Анализы',
+    'Прогревание',
+    'Введение лекарственных препаратов',
+    //"укол",
     /*  'Измерение массы тела ',
     'Измерение роста ',
     'Измерение частоты дыхания ',
@@ -116,7 +153,7 @@ export function Appointment() {
     'Термометрия общая ',
     'Подкожное введение лекарственных препаратов ',
     'Внутримышечное введение лекарственных препаратов ', */
-   /* 'Диагностическая аспирация сустава ',
+    /* 'Диагностическая аспирация сустава ',
     'Внутрисуставное введение лекарственных препаратов ',
     'Получение материала из верхних дыхательных путей ',
     'Получение мокроты ',
@@ -125,12 +162,13 @@ export function Appointment() {
   ];
 
   const mockDoctor = {
-    "avatar": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80",
-    "title": "Хирург",
-    "name": "Иван Иванович",
-    "email": "robert@glassbreaker.io",
-    "phone": "+11 (876) 890 56 23"
-  }
+    avatar:
+      'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80',
+    title: 'Хирург',
+    name: 'Иван Иванович Ивановский',
+    email: 'robert@glassbreaker.io',
+    phone: '+11 (876) 890 56 23',
+  };
 
   const form = useForm({
     initialValues: {
@@ -138,6 +176,8 @@ export function Appointment() {
       password: '',
       name: '',
       email: '',
+search:'',
+
       website: '',
       github: '',
     },
@@ -151,7 +191,7 @@ export function Appointment() {
         };
       }
 
-      if (active === 1) {
+      if (active === 2) {
         return {
           name: values.name.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
           email: /^\S+@\S+$/.test(values.email) ? null : 'Некорректный email',
@@ -170,10 +210,13 @@ export function Appointment() {
       if (form.validate().hasErrors) {
         return current;
       }
-      return current < 3 ? current + 1 : current;
+      setHighestStepVisited((hSC) => Math.max(hSC, current < 4 ? current + 1 : current));
+      return current < 4 ? current + 1 : current;
     });
 
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+
+  const shouldAllowSelectStep = (step: number) => highestStepVisited >= step && active !== step;
 
   return (
     <>
@@ -193,8 +236,12 @@ export function Appointment() {
             </Text>
           </Title>
 
-          <Stepper active={active} breakpoint="sm">
-            <Stepper.Step label="Шаг 1" description="Данные о приеме">
+          <Stepper active={active} breakpoint="sm" onStepClick={setActive}>
+            <Stepper.Step
+              label="Шаг 1"
+              description="Вводные данные"
+              allowStepSelect={shouldAllowSelectStep(0)}
+            >
               {/*} <Title mt="xl">
                 <Text
                   className={classes.title2}
@@ -204,6 +251,12 @@ export function Appointment() {
                   Вводные данные
                 </Text>
   </Title> */}
+              <Space h="xl" />
+              <Title>
+                <Text className={classes.title2} component="span" inherit>
+                  Вводные данные
+                </Text>
+              </Title>
               <Box mb="xl">
                 <Stack mt="xl" mb="xl">
                   <Radio.Group
@@ -222,6 +275,8 @@ export function Appointment() {
                     </Group>
                   </Radio.Group>
 
+                  <Space h="xxs" />
+
                   <Radio.Group
                     name="age"
                     label="Возраст пациента"
@@ -238,21 +293,47 @@ export function Appointment() {
                     </Group>
                   </Radio.Group>
 
-                  <Select
-                  maw={400}
-      label="Удобный вам центр"
-      placeholder="ближайший"
-      searchable
-      nothingFound="No options"
-      data={['Адрес 1', '2ой адрес', 'Адрес 3', '4ый адрес']}
-    />
-
+                  {/*  <Select
+                    maw={400}
+                    label="Удобный вам центр"
+                    placeholder="ближайший"
+                    searchable
+                    nothingFound="No options"
+                    data={['Адрес 1', '2ой адрес', 'Адрес 3', '4ый адрес']}
+/> */}
+<Space h="xxs" />
+<Text className={classes.title3} component="span" inherit>
+                      Выберите медцентр:
+                    </Text>
+                  <Checkbox.Group value={valueAdress} onChange={setValueAdress}>
+                    <Group spacing='xl'>
+                      <Stack spacing='xs'>
+                        {addressAr.slice(0,3).map((item, index) => (
+                          <Checkbox value={'ad'+index} label={item} />
+                        ))}
+                        
+                      </Stack>
+                      <Stack spacing='xs'>
+                      {addressAr.slice(3,6).map((item, index) => (
+                          <Checkbox value={'ad'+(index+3)} label={item} />
+                        ))}
+                        
+                      </Stack>
+                    </Group>
+                  </Checkbox.Group>
                 </Stack>
               </Box>
 
-              <Space h="xl" />
+              
+            </Stepper.Step>
 
+            <Stepper.Step
+              label="Шаг 2"
+              description="Данные о приеме"
+              allowStepSelect={shouldAllowSelectStep(1)}
+            >
               <Box>
+                <Space h="xl" />
                 <Title>
                   <Text className={classes.title2} component="span" inherit>
                     Выбор специалиста / услуги
@@ -276,9 +357,10 @@ export function Appointment() {
                     placeholder="Поиск услуг и врачей"
                     rightSectionWidth={42}
                     sx={{ border: theme.colors.oceanBlue[8], width: '500px' }}
+                    {...form.getInputProps('search')}
                     // {...props}
                   />
-                  <Space h="xxs" /> 
+                  <Space h="xxs" />
                   <Title>
                     <Text className={classes.title3} component="span" inherit>
                       По специальности ( <u>популярные</u> / <u>все</u> )
@@ -290,37 +372,40 @@ export function Appointment() {
                       <Button variant="outline">{item}</Button>
                     ))}
                   </Group>
-                  <Space h="xxs" /> 
+                  <Space h="xxs" />
                   <Title>
                     <Text className={classes.title3} component="span" inherit>
                       По услугам ( <u>популярные</u> / <u>все</u> )
                     </Text>
                   </Title>
-                 
+
                   <Group spacing="xs">
                     {uslAr.map((item: string, index: number) => (
-                      <Button variant="default" compact sx={{fontWeight:300}}>{item}</Button>
+                      <Button variant="default" compact sx={{ fontWeight: 300 }}>
+                        {item}
+                      </Button>
                     ))}
                   </Group>
-                  <Space h="xxs" /> 
+                  <Space h="xxs" />
                   <Title>
                     <Text className={classes.title3} component="span" inherit>
                       Наши врачи ( <u>популярные</u> / <u>все</u> )
                     </Text>
                   </Title>
-                  <Group spacing="xs">
+                  <Grid>
                     {Array.from(Array(15)).map((item: any, index: number) => (
-                      <UserInfoIcons {...mockDoctor}/>
+                      <UserInfoIcons {...mockDoctor} />
                     ))}
-                  </Group>
-
-                  
-
+                  </Grid>
                 </Stack>
               </Box>
             </Stepper.Step>
 
-            <Stepper.Step label="Шаг 2" description="Персональная информация">
+            <Stepper.Step
+              label="Шаг 3"
+              description="Персональная информация"
+              allowStepSelect={shouldAllowSelectStep(2)}
+            >
               <Box maw={400} mx="auto" w={'100%'} mt="xl">
                 <Center>
                   <Box maw={400} mx="auto" w={'100%'} mt="xl">
@@ -347,7 +432,11 @@ export function Appointment() {
               </Box>
             </Stepper.Step>
 
-            <Stepper.Step label="Завершение" description="Данные приема">
+            <Stepper.Step
+              label="Завершение"
+              description="Данные приема"
+              allowStepSelect={shouldAllowSelectStep(3)}
+            >
               <Box maw={400} mx="auto" w={'100%'} mt="xl">
                 <TextInput label="..." placeholder="..." {...form.getInputProps('website')} />
                 <TextInput

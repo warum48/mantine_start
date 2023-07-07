@@ -1,5 +1,10 @@
-import { createStyles, Avatar, Text, Group, Box, Paper } from '@mantine/core';
+import { createStyles, Avatar, Text, Group, Box, Paper, Button, Grid, Stack, Divider, rem } from '@mantine/core';
+
+import { Calendar } from '@mantine/dates';
+import { DatePicker } from '@mantine/dates';
 import { IconPhoneCall, IconAt } from '@tabler/icons-react';
+import { useState } from 'react';
+import 'dayjs/locale/ru';
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -8,6 +13,25 @@ const useStyles = createStyles((theme) => ({
 
   name: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+  },
+
+  title: {
+    color: theme.colors.virilisPink[0], // theme.colors.gray[6], //theme.white,
+
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 400,
+    lineHeight: 1.05,
+    maxWidth: rem(500),
+    fontSize: rem(18),
+    // zIndex:100,
+    position: 'relative',
+    display: 'block',
+
+    [theme.fn.smallerThan('md')]: {
+      maxWidth: '100%',
+      fontSize: rem(14),
+      lineHeight: 1.15,
+    },
   },
 }));
 
@@ -21,21 +45,51 @@ interface UserInfoIconsProps {
 
 export function UserInfoIcons({ avatar, name, title, phone, email }: UserInfoIconsProps) {
   const { classes } = useStyles();
+  const [expanded, setExpanded] = useState(false);
   return (
-    <Paper 
-    maw={580}
-     shadow="xs" p="xs" withBorder w={'45%'} miw={300}>
-      <Group noWrap>
-        <Avatar src={avatar} size={70} radius="md" />
-        <div>
-          <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
-            {title}
-          </Text>
+    <Grid.Col span={expanded ? 12 : 6}>
+      <Paper
+        //maw={700}
+        sx={{ position: 'relative' }}
+        shadow="xs"
+        p={ expanded?  'xl' :"xs"}
+        withBorder
+        //w={expanded ? '100%':'50%'}
+        //miw={expanded ? '100%':300}
+        //mih={expanded ? 400 : 0}
+        //ml='xs'
+      >
+        <Button
+          compact
+          variant="light"
+          sx={{ position: 'absolute', top: '4px', right: '4px' }}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? '✕' : '➔'}
+        </Button>
+        <Grid>
+        <Grid.Col span="auto">
+          <Group noWrap>
+            <Avatar src={avatar} size={expanded? 150:80} radius="md" />
+            <div>
+              <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
+                {title}
+              </Text>
 
-          <Text fz="lg" fw={500} className={classes.name}>
-            {name}
-          </Text>
-{/*
+              <Text fz="lg" fw={500} className={classes.name}>
+                {name}
+              </Text>
+
+              <Text fz="xs" fw={500} className={classes.name}>
+                Есть запись: сегодня, завтра, 10.07, 12.07, 14.07
+              </Text>
+
+              <Text fz="xs" fw={500} className={classes.name}>
+                Стомость приемв: от 5000 р.
+              </Text>
+
+               
+              {/*
           <Group noWrap spacing={10} mt={3}>
             <IconAt stroke={1.5} size="1rem" className={classes.icon} />
             <Text fz="xs" c="dimmed">
@@ -49,8 +103,29 @@ export function UserInfoIcons({ avatar, name, title, phone, email }: UserInfoIco
               {phone}
             </Text>
   </Group> */}
-        </div>
-      </Group>
-    </Paper>
+            </div>
+            
+          </Group>
+          {expanded && <>
+          <Divider mt="xl" mr='xl' mb='sm'/>
+            список услуг
+            </>}
+          </Grid.Col>
+          {expanded &&
+          <Grid.Col span='content'>
+            <Box >
+            <Box className={classes.title}>Записатьcя на прием</Box>
+            <Divider my="sm" />
+            <DatePicker hideWeekdays locale="ru" 
+            mx='-sm'
+             />
+              <Divider my="sm" />
+              <Box>даты</Box> 
+            </Box>
+            </Grid.Col>
+}
+        </Grid>
+      </Paper>
+    </Grid.Col>
   );
 }
