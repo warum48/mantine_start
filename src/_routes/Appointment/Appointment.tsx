@@ -1,4 +1,8 @@
-import { useState } from 'react';
+
+
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import InputMask from 'react-input-mask';
 import {
   Stepper,
   Button,
@@ -25,6 +29,8 @@ import { useForm } from '@mantine/form';
 import { FastCommentsCommentWidget } from 'fastcomments-react';
 import { IconArrowLeft, IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { UserInfoIcons } from './components/userInfoIcons';
+import { FloatingLabelInput } from './components/FloatingLabelInput';
+import { FloatingLabelInputMask } from './components/FloatingLabelInputMask';
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -85,24 +91,44 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+
+
+
+
+type TChildren = { children: React.ReactNode };
+const TitleLabel = ({ children }: TChildren) => {
+  const { classes, theme } = useStyles();
+
+  return (
+    <Title 
+  // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
+    >
+      <Text className={classes.title3} component="span" inherit>
+        {children}
+      </Text>
+    </Title>
+  );
+};
+
 export function Appointment() {
   const [active, setActive] = useState(0);
   const [highestStepVisited, setHighestStepVisited] = useState(active);
   //const theme = useMantineTheme();
   const { classes, theme } = useStyles();
+  // const { classes : inputClasses  } = useStylesInput();
 
   const [valueType, setValueType] = useState('react');
   const [valueAge, setValueAge] = useState('age3');
   const [valueAdress, setValueAdress] = useState<string[]>([]);
 
   const addressAr = [
-    "Ленинский пр., д. 108, корп. 1",
-    "Проспект Ветеранов · 1,9 км",
-    "Ленинский проспект · 2,3 км",
-    "Автово · 2,7 км",
-    "Ленинский пр., д. 108, корп. 1",
-    "Проспект Ветеранов · 1,9 км",
-  ]
+    'Ленинский пр., д. 108, корп. 1',
+    'Проспект Ветеранов · 1,9 км',
+    'Ленинский проспект · 2,3 км',
+    'Автово · 2,7 км',
+    'Ленинский пр., д. 108, корп. 1',
+    'Проспект Ветеранов · 1,9 км',
+  ];
 
   const profAr = [
     'Терапевт',
@@ -172,12 +198,23 @@ export function Appointment() {
 
   const form = useForm({
     initialValues: {
-      username: '',
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      phone: '',
+      comment: '',
       password: '',
-      name: '',
-      email: '',
-search:'',
+      firstName_our: '',
 
+      email: '',
+      search: '',
+      age: '', //age0-age3
+      appointmentType: 'apt0', //apt0-3
+      address: [''],
+      // search: '',
+
+      name: '',
+      username: '',
       website: '',
       github: '',
     },
@@ -193,11 +230,13 @@ search:'',
 
       if (active === 2) {
         return {
-          name: values.name.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
+          firstName_our: values.firstName_our.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
+          lastName: values.lastName.trim().length < 2 ? 'Фамилия должна содержать хотя бы 2 буквы' : null,
+         /* name: values.name.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
           email: /^\S+@\S+$/.test(values.email) ? null : 'Некорректный email',
           username:
             values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
-          password: values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null,
+          password: values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null, */
         };
       }
 
@@ -208,15 +247,32 @@ search:'',
   const nextStep = () =>
     setActive((current) => {
       if (form.validate().hasErrors) {
+        console.log('!ERROR IN VALID')
         return current;
+        
       }
-      setHighestStepVisited((hSC) => Math.max(hSC, current < 4 ? current + 1 : current));
-      return current < 4 ? current + 1 : current;
+      setHighestStepVisited((hSC) => Math.max(hSC, current < 5 ? current + 1 : current));
+      return current < 5 ? current + 1 : current;
     });
 
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
 
   const shouldAllowSelectStep = (step: number) => highestStepVisited >= step && active !== step;
+
+  useEffect(() => {
+    const storedValue = window.localStorage.getItem('user-form') as string;
+    if (storedValue) {
+      try {
+        form.setValues(JSON.parse(storedValue)); //window.localStorage.getItem('user-form')));
+      } catch (e) {
+        console.log('Failed to parse stored value');
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem('user-form', JSON.stringify(form.values));
+  }, [form.values]);
 
   return (
     <>
@@ -262,16 +318,17 @@ search:'',
                   <Radio.Group
                     name="appointment"
                     label="Тип приема"
-                    value={valueType}
-                    onChange={setValueType}
+                    {...form.getInputProps('appointmentType')}
+                    //value={valueType}
+                    //onChange={setValueType}
                     // description="This is anonymous"
                     // withAsterisk
                   >
                     <Group mt="xs">
-                      <Radio value="react" label="В медцентре" />
-                      <Radio disabled value="svelte" label="Телемедицина" />
-                      <Radio disabled value="ng" label="Вызов врача на дом" />
-                      <Radio disabled value="vue" label="Забор анализов" />
+                      <Radio value="apt0" label="В медцентре" />
+                      <Radio disabled value="apt1" label="Телемедицина" />
+                      <Radio disabled value="apt2" label="Вызов врача на дом" />
+                      <Radio disabled value="apt3" label="Забор анализов" />
                     </Group>
                   </Radio.Group>
 
@@ -280,8 +337,9 @@ search:'',
                   <Radio.Group
                     name="age"
                     label="Возраст пациента"
-                    value={valueAge}
-                    onChange={setValueAge}
+                    {...form.getInputProps('age')}
+                    //value={valueAge}
+                    //onChange={setValueAge}
                     // description="This is anonymous"
                     // withAsterisk
                   >
@@ -301,30 +359,29 @@ search:'',
                     nothingFound="No options"
                     data={['Адрес 1', '2ой адрес', 'Адрес 3', '4ый адрес']}
 /> */}
-<Space h="xxs" />
-<Text className={classes.title3} component="span" inherit>
-                      Выберите медцентр:
-                    </Text>
-                  <Checkbox.Group value={valueAdress} onChange={setValueAdress}>
-                    <Group spacing='xl'>
-                      <Stack spacing='xs'>
-                        {addressAr.slice(0,3).map((item, index) => (
-                          <Checkbox value={'ad'+index} label={item} />
+                  <Space h="xxs" />
+                  <Text className={classes.title3} component="span" inherit>
+                    Выберите медцентр:
+                  </Text>
+                  <Checkbox.Group
+                    //value={valueAdress} onChange={setValueAdress}
+                    {...form.getInputProps('address')}
+                  >
+                    <Group spacing="xl">
+                      <Stack spacing="xs">
+                        {addressAr.slice(0, 3).map((item, index) => (
+                          <Checkbox value={'ad' + index} label={item} />
                         ))}
-                        
                       </Stack>
-                      <Stack spacing='xs'>
-                      {addressAr.slice(3,6).map((item, index) => (
-                          <Checkbox value={'ad'+(index+3)} label={item} />
+                      <Stack spacing="xs">
+                        {addressAr.slice(3, 6).map((item, index) => (
+                          <Checkbox value={'ad' + (index + 3)} label={item} />
                         ))}
-                        
                       </Stack>
                     </Group>
                   </Checkbox.Group>
                 </Stack>
               </Box>
-
-              
             </Stepper.Step>
 
             <Stepper.Step
@@ -409,11 +466,30 @@ search:'',
               <Box maw={400} mx="auto" w={'100%'} mt="xl">
                 <Center>
                   <Box maw={400} mx="auto" w={'100%'} mt="xl">
-                    <TextInput
+                    <TitleLabel>ФИО пациента</TitleLabel>
+                    {/*<TextInput placeholder="Имя" label="Имя" {...form.getInputProps('name')} classNames={inputClasses}/> */}
+                    <TextInput placeholder="Имя" label="Имя" {...form.getInputProps('firstName_our')} />
+                 {/*    <TextInput placeholder="Фамилия" label="Фамилия" {...form.getInputProps('lastName')} />
+                   <FloatingLabelInput
+                    name="firstName"
+                    id="firstName"
+                      label="Имя"
+                      //{...form.getInputProps('username')}
+                      form={form}
+                      formField="firstName"
+                      required
+                      sx={{ marginTop: '0.5rem !important' }}
+                      mask="aaaaa"
+                    /> */}
+                    <FloatingLabelInput label="Фамилия" form={form} formField="lastName" required />
+                    <FloatingLabelInput label="Отчество" form={form} formField="middleName" />
+                    {/*} <TextInput
                       label="Аккаунт пользователя"
                       placeholder="Аккаунт"
                       {...form.getInputProps('username')}
-                    />
+                    />*/}
+                    <FloatingLabelInputMask label="Телефон" form={form} formField="phone" required mask="+7 (999) 999-99-99" type="tel" name="phone" id="phone"/>
+                    
                     <PasswordInput
                       mt="md"
                       label="Пароль"
@@ -432,7 +508,7 @@ search:'',
               </Box>
             </Stepper.Step>
 
-            <Stepper.Step
+         {/*   <Stepper.Step
               label="Завершение"
               description="Данные приема"
               allowStepSelect={shouldAllowSelectStep(3)}
@@ -446,7 +522,7 @@ search:'',
                   {...form.getInputProps('github')}
                 />
               </Box>
-            </Stepper.Step>
+                  </Stepper.Step> */}
             <Stepper.Completed>
               Готово! Данные формы:
               <Code block mt="xl">

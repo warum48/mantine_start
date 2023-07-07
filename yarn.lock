@@ -1987,6 +1987,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-input-mask@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@types/react-input-mask@npm:3.0.2"
+  dependencies:
+    "@types/react": "*"
+  checksum: 1fadbba04b72a2898b2b85b9b62a8cbf8043ff98f503e23293f27d4e56843bbe2dd3da51f48de4bc3916aff31eb93083c6090090ce8b0837f1f174c447e81ad4
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*":
   version: 18.0.9
   resolution: "@types/react@npm:18.0.9"
@@ -5689,6 +5698,7 @@ __metadata:
     "@types/lodash": ^4.14.195
     "@types/react": ^18.0.27
     "@types/react-dom": ^18.0.10
+    "@types/react-input-mask": ^3.0.2
     "@typescript-eslint/eslint-plugin": ^5.50.0
     "@typescript-eslint/parser": ^5.50.0
     "@vitejs/plugin-react": ^3.1.0
@@ -5710,6 +5720,7 @@ __metadata:
     react: ^18.2.0
     react-cookie: ^4.1.1
     react-dom: ^18.2.0
+    react-input-mask: ^2.0.4
     react-router-dom: ^6.14.0
     ts-jest: ^29.0.5
     typescript: ^4.9.5
@@ -6450,6 +6461,19 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
   checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+  languageName: node
+  linkType: hard
+
+"react-input-mask@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "react-input-mask@npm:2.0.4"
+  dependencies:
+    invariant: ^2.2.4
+    warning: ^4.0.2
+  peerDependencies:
+    react: ">=0.14.0"
+    react-dom: ">=0.14.0"
+  checksum: 429b46c54c9572fe2d4856c399c41c3b02b3ac398adde88e6f8f5f6dd95999528551d84222e0925a538eec775b2330e7b56c40dd79549addfe8b10e901ed4446
   languageName: node
   linkType: hard
 
@@ -7660,6 +7684,15 @@ __metadata:
   dependencies:
     makeerror: 1.0.12
   checksum: ad7a257ea1e662e57ef2e018f97b3c02a7240ad5093c392186ce0bcf1f1a60bbadd520d073b9beb921ed99f64f065efb63dfc8eec689a80e569f93c1c5d5e16c
+  languageName: node
+  linkType: hard
+
+"warning@npm:^4.0.2":
+  version: 4.0.3
+  resolution: "warning@npm:4.0.3"
+  dependencies:
+    loose-envify: ^1.0.0
+  checksum: 4f2cb6a9575e4faf71ddad9ad1ae7a00d0a75d24521c193fa464f30e6b04027bd97aa5d9546b0e13d3a150ab402eda216d59c1d0f2d6ca60124d96cd40dfa35c
   languageName: node
   linkType: hard
 
