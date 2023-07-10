@@ -1053,6 +1053,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fullcalendar/core@npm:^6.1.8":
+  version: 6.1.8
+  resolution: "@fullcalendar/core@npm:6.1.8"
+  dependencies:
+    preact: ~10.12.1
+  checksum: 66c13078c95573c4dc1c767c2a855c8f77608d1c0cee07eac4923fa1d967a64557640079b45e3da43a68cb8942873dd06523716544f25d98efa3641c0754045f
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/daygrid@npm:^6.1.8, @fullcalendar/daygrid@npm:~6.1.8":
+  version: 6.1.8
+  resolution: "@fullcalendar/daygrid@npm:6.1.8"
+  peerDependencies:
+    "@fullcalendar/core": ~6.1.8
+  checksum: a99441c81d8b2054cb03945a2cd4907ef569c759b68238d953d86fc96f739c75305219de182a61d82c77d54893041657bb4bc3f8a5a0779e57e294a614ae9677
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/react@npm:^6.1.8":
+  version: 6.1.8
+  resolution: "@fullcalendar/react@npm:6.1.8"
+  peerDependencies:
+    "@fullcalendar/core": ~6.1.8
+    react: ^16.7.0 || ^17 || ^18
+    react-dom: ^16.7.0 || ^17 || ^18
+  checksum: 8381ea73df16f84c8e69c97083aa99620daf3c7af6ccba47a0e0447ee4dd648163a9447360893e53ede65e017cf84f88f7b1a3c2cbb083cd7f9c54dfef1edf1e
+  languageName: node
+  linkType: hard
+
+"@fullcalendar/timegrid@npm:^6.1.8":
+  version: 6.1.8
+  resolution: "@fullcalendar/timegrid@npm:6.1.8"
+  dependencies:
+    "@fullcalendar/daygrid": ~6.1.8
+  peerDependencies:
+    "@fullcalendar/core": ~6.1.8
+  checksum: 122786fd402aca8152d534cd8bd5e2cba93adde5413a986963c9839438635a715bb15012daf3256174877ea1c5ee8fa6c2ce93b565c532d802db06a257ac028b
+  languageName: node
+  linkType: hard
+
 "@graphql-typed-document-node/core@npm:^3.1.1":
   version: 3.2.0
   resolution: "@graphql-typed-document-node/core@npm:3.2.0"
@@ -1984,6 +2024,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: ff8282d5005a0b1cd95fb65bf79d3d8485e4cfe2aaf052129033a178684b940014a3f4536bc20d573f8a01cf4c6f4770c74988cef7c2b5cac3041d9f172647e3
+  languageName: node
+  linkType: hard
+
+"@types/react-helmet@npm:^6.1.6":
+  version: 6.1.6
+  resolution: "@types/react-helmet@npm:6.1.6"
+  dependencies:
+    "@types/react": "*"
+  checksum: 81560c56bfe854b6a43aee31360862588ac875d1177b975da5ce049ac9aa2f7c98dcde65d4397bfaa04e468f40cf3ab2975a2ef966a69d64a60493422898698d
   languageName: node
   linkType: hard
 
@@ -5685,6 +5734,10 @@ __metadata:
     "@apollo/client": 3.7.2
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.11.0
+    "@fullcalendar/core": ^6.1.8
+    "@fullcalendar/daygrid": ^6.1.8
+    "@fullcalendar/react": ^6.1.8
+    "@fullcalendar/timegrid": ^6.1.8
     "@mantine/core": 6.0.0
     "@mantine/dates": ^6.0.16
     "@mantine/form": ^6.0.16
@@ -5698,6 +5751,7 @@ __metadata:
     "@types/lodash": ^4.14.195
     "@types/react": ^18.0.27
     "@types/react-dom": ^18.0.10
+    "@types/react-helmet": ^6.1.6
     "@types/react-input-mask": ^3.0.2
     "@typescript-eslint/eslint-plugin": ^5.50.0
     "@typescript-eslint/parser": ^5.50.0
@@ -5720,6 +5774,8 @@ __metadata:
     react: ^18.2.0
     react-cookie: ^4.1.1
     react-dom: ^18.2.0
+    react-error-boundary: ^4.0.10
+    react-helmet: ^6.1.0
     react-input-mask: ^2.0.4
     react-router-dom: ^6.14.0
     ts-jest: ^29.0.5
@@ -6335,6 +6391,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"preact@npm:~10.12.1":
+  version: 10.12.1
+  resolution: "preact@npm:10.12.1"
+  checksum: 0de99f477563ab7f94a0f964952ad216375973c0dcd9eb49881f8eb5effc5ed6948da062548c87d5bb0d82f1a1e516b649020e760eab3a0503dfdd8e64d34a26
+  languageName: node
+  linkType: hard
+
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
@@ -6464,6 +6527,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-error-boundary@npm:^4.0.10":
+  version: 4.0.10
+  resolution: "react-error-boundary@npm:4.0.10"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+  peerDependencies:
+    react: ">=16.13.1"
+  checksum: 4ad4864d2a5fc2264a24d03e83176e6a70d7adbe3c1edbdc5b0bd452a695104bc59456e23b5aea1b9729220672fe46614221daa8b3bd59327968d4aa7eb8bc71
+  languageName: node
+  linkType: hard
+
+"react-fast-compare@npm:^3.1.1":
+  version: 3.2.2
+  resolution: "react-fast-compare@npm:3.2.2"
+  checksum: 2071415b4f76a3e6b55c84611c4d24dcb12ffc85811a2840b5a3f1ff2d1a99be1020d9437ee7c6e024c9f4cbb84ceb35e48cf84f28fcb00265ad2dfdd3947704
+  languageName: node
+  linkType: hard
+
+"react-helmet@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "react-helmet@npm:6.1.0"
+  dependencies:
+    object-assign: ^4.1.1
+    prop-types: ^15.7.2
+    react-fast-compare: ^3.1.1
+    react-side-effect: ^2.1.0
+  peerDependencies:
+    react: ">=16.3.0"
+  checksum: a4998479dab7fc1c2799eddefb1870a9d881b5f71cfdf97979a9882e42f4bb50402d55335f308f461e735e01a06f46b16cc7b4e6bcb22c7a4a6f85a753c5c106
+  languageName: node
+  linkType: hard
+
 "react-input-mask@npm:^2.0.4":
   version: 2.0.4
   resolution: "react-input-mask@npm:2.0.4"
@@ -6561,6 +6656,15 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 50a941746d12e81cea5495505c1afbcd099cc7d497624b013454cfd5a360d9403578f8fb3df17973bf775fbff91cb76477448023d537215e6aa71a8b85ae95bd
+  languageName: node
+  linkType: hard
+
+"react-side-effect@npm:^2.1.0":
+  version: 2.1.2
+  resolution: "react-side-effect@npm:2.1.2"
+  peerDependencies:
+    react: ^16.3.0 || ^17.0.0 || ^18.0.0
+  checksum: c5eb1f42b464fb093bca59aaae0f1b2060373a2aaff95275b8781493628cdbbb6acdd6014e7883782c65c361f35a30f28cc515d68a1263ddb39cbbc47110be53
   languageName: node
   linkType: hard
 

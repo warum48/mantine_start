@@ -36,6 +36,39 @@ const mockdata = [
   ,
 
   {
+    label: 'Календарь посещений',
+    icon: IconAdjustments,
+    link: RoutesTypes.Calendar
+  }
+  ,
+
+  {
+    label: 'Документы',
+    icon: IconAdjustments,
+    link: RoutesTypes.Documents
+  },
+/*
+  {
+    label: 'Результаты исследований',
+    icon: IconAdjustments,
+    link: RoutesTypes.Empty
+  },
+
+  {
+    label: 'Члены семьи',
+    icon: IconAdjustments,
+    link: RoutesTypes.Empty
+  },
+
+  {
+    label: 'История',
+    icon: IconAdjustments,
+    link: RoutesTypes.Empty
+  },
+  */
+
+  /*
+  {
     label: 'Раздел с подразделами',
     icon: IconNotes,
     initiallyOpened: false,
@@ -45,7 +78,8 @@ const mockdata = [
       { label: 'Три', link: '/' },
       { label: 'Четыре', link: '/' },
     ],
-  },
+  },*/
+
   /*
   { label: 'Analytics', icon: IconPresentationAnalytics },
   { label: 'Contracts', icon: IconFileAnalytics },

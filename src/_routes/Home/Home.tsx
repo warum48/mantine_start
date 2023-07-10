@@ -96,7 +96,10 @@ export const Home = () => {
   const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - ${theme.spacing.md} / 2)`;
   return (
     <>
-      <Box>
+      <Box 
+      //my="-0.125rem"
+      mt="-xs"
+      >
         {/*} <Title order={3} my="xl">
           Добро пожаловать в Вирилис
   </Title> */}

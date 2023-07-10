@@ -28,6 +28,9 @@ import { ApolloSettingsProvider } from '_apollo'; ///context
 import { Home } from './_routes/Home/Home';
 import { Appointment } from './_routes/Appointment/Appointment';
 import { Auth } from './_routes/Auth/Auth';
+import { CalendarPage } from './_routes/calendar/CalendarPage';
+import { Documents } from './_routes/Documents/Documents';
+import { Empty } from './_routes/Empty/Empty';
 //
 //import { Home } from "_routes/home/Home";
 //import { Reports } from "_routes/reports/Reports";
@@ -93,6 +96,18 @@ const RootWrapper = () => {
             <Route
               path={RoutesTypes.Appointment}
                element={<Appointment />}
+            />
+            <Route
+              path={RoutesTypes.Calendar}
+               element={<CalendarPage />}
+            />
+            <Route
+              path={RoutesTypes.Documents}
+               element={<Documents />}
+            />
+            <Route
+              path={RoutesTypes.Empty}
+               element={<Empty />}
             />
             <Route
               path={RoutesTypes.Auth}

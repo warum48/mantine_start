@@ -1,5 +1,3 @@
-
-
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import InputMask from 'react-input-mask';
@@ -29,93 +27,20 @@ import { useForm } from '@mantine/form';
 import { FastCommentsCommentWidget } from 'fastcomments-react';
 import { IconArrowLeft, IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { UserInfoIcons } from './components/userInfoIcons';
-import { FloatingLabelInput } from './components/FloatingLabelInput';
-import { FloatingLabelInputMask } from './components/FloatingLabelInputMask';
-
-const useStyles = createStyles((theme) => ({
-  title: {
-    color: theme.colors.gray[6], //theme.white,
-
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 300,
-    lineHeight: 1.05,
-    maxWidth: rem(500),
-    fontSize: rem(30),
-    // zIndex:100,
-    position: 'relative',
-    display: 'block',
-
-    [theme.fn.smallerThan('md')]: {
-      maxWidth: '100%',
-      fontSize: rem(20),
-      lineHeight: 1.15,
-    },
-  },
-
-  title2: {
-    color: theme.colors.virilisPink[0], // theme.colors.gray[6], //theme.white,
-
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 400,
-    lineHeight: 1.05,
-    maxWidth: rem(500),
-    fontSize: rem(24),
-    // zIndex:100,
-    position: 'relative',
-    display: 'block',
-
-    [theme.fn.smallerThan('md')]: {
-      maxWidth: '100%',
-      fontSize: rem(20),
-      lineHeight: 1.15,
-    },
-  },
-
-  title3: {
-    color: theme.colors.gray[8], //theme.white,
-
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 600,
-    lineHeight: 1.05,
-    maxWidth: rem(600),
-    fontSize: '0.875rem', //rem(24),
-    // zIndex:100,
-    position: 'relative',
-    display: 'block',
-
-    [theme.fn.smallerThan('md')]: {
-      // maxWidth: '100%',
-      // fontSize: rem(20),
-      // lineHeight: 1.15,
-    },
-  },
-}));
+import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
+import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
+import { Title1_main, TitleLabel, useHeadersStyles } from '../../_styles/headers';
+import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
 
 
 
-
-
-type TChildren = { children: React.ReactNode };
-const TitleLabel = ({ children }: TChildren) => {
-  const { classes, theme } = useStyles();
-
-  return (
-    <Title 
-  // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
-    >
-      <Text className={classes.title3} component="span" inherit>
-        {children}
-      </Text>
-    </Title>
-  );
-};
 
 export function Appointment() {
   const [active, setActive] = useState(0);
   const [highestStepVisited, setHighestStepVisited] = useState(active);
   //const theme = useMantineTheme();
-  const { classes, theme } = useStyles();
-  // const { classes : inputClasses  } = useStylesInput();
+  const { classes, theme } = useHeadersStyles();
+  // const { classes : inputClasses  } = useHeadersStylesInput();
 
   const [valueType, setValueType] = useState('react');
   const [valueAge, setValueAge] = useState('age3');
@@ -230,13 +155,18 @@ export function Appointment() {
 
       if (active === 2) {
         return {
-          firstName_our: values.firstName_our.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
-          lastName: values.lastName.trim().length < 2 ? 'Фамилия должна содержать хотя бы 2 буквы' : null,
-         /* name: values.name.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
+          firstName:
+            values.firstName.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
+          lastName:
+            values.lastName.trim().length < 2 ? 'Фамилия должна содержать хотя бы 2 буквы' : null,
+          // name: values.name.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
           email: /^\S+@\S+$/.test(values.email) ? null : 'Некорректный email',
-          username:
-            values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
-          password: values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null, */
+          // username:values.username.trim().length < 2 ? 'Имя должно содержать хотя бы 2 буквы' : null,
+          //password: values.password.length < 6 ? 'Пароль должен содержать хотя бы 6 знаков' : null,
+          age:
+            values.age.trim().length < 8 || values.age.trim().includes('_')
+              ? 'Это поле обязательно'
+              : null,
         };
       }
 
@@ -247,9 +177,8 @@ export function Appointment() {
   const nextStep = () =>
     setActive((current) => {
       if (form.validate().hasErrors) {
-        console.log('!ERROR IN VALID')
+        console.log('!ERROR IN VALID');
         return current;
-        
       }
       setHighestStepVisited((hSC) => Math.max(hSC, current < 5 ? current + 1 : current));
       return current < 5 ? current + 1 : current;
@@ -275,22 +204,13 @@ export function Appointment() {
   }, [form.values]);
 
   return (
-    <>
-      <Box maw={1200} mx="auto" w={'100%'} mt="xl">
+    <InnerPageContainer className='appointment'>
+      <Box maw={1200} mx="auto" w={'100%'} 
+      //mt="xl"
+      >
         <Box mih={'80vh'}>
           {/*<h4> Записаться на прием </h4>*/}
-          <Title mb="xl">
-            <Text
-              className={classes.title}
-              component="span"
-              inherit
-              variant="gradient"
-              //gradient={{ from: 'DeepPink', to: 'pink' }}
-              gradient={{ from: '#01868a', to: '#0dab5f' }}
-            >
-              Записаться на прием
-            </Text>
-          </Title>
+          <Title1_main>Записаться на прием</Title1_main>
 
           <Stepper active={active} breakpoint="sm" onStepClick={setActive}>
             <Stepper.Step
@@ -468,8 +388,8 @@ export function Appointment() {
                   <Box maw={400} mx="auto" w={'100%'} mt="xl">
                     <TitleLabel>ФИО пациента</TitleLabel>
                     {/*<TextInput placeholder="Имя" label="Имя" {...form.getInputProps('name')} classNames={inputClasses}/> */}
-                    <TextInput placeholder="Имя" label="Имя" {...form.getInputProps('firstName_our')} />
-                 {/*    <TextInput placeholder="Фамилия" label="Фамилия" {...form.getInputProps('lastName')} />
+                    {/*  <TextInput placeholder="Имя" label="Имя" {...form.getInputProps('firstName_our')} />
+                     <TextInput placeholder="Фамилия" label="Фамилия" {...form.getInputProps('lastName')} />
                    <FloatingLabelInput
                     name="firstName"
                     id="firstName"
@@ -481,34 +401,56 @@ export function Appointment() {
                       sx={{ marginTop: '0.5rem !important' }}
                       mask="aaaaa"
                     /> */}
+                    <FloatingLabelInput label="Имя" form={form} formField="firstName" required />
                     <FloatingLabelInput label="Фамилия" form={form} formField="lastName" required />
                     <FloatingLabelInput label="Отчество" form={form} formField="middleName" />
-                    {/*} <TextInput
+                    <FloatingLabelInput label="Email" form={form} formField="email" required />
+                    {/* <FloatingLabelInput label="Отчество" form={form} formField="middleName" />
+                    } <TextInput
                       label="Аккаунт пользователя"
                       placeholder="Аккаунт"
                       {...form.getInputProps('username')}
                     />*/}
-                    <FloatingLabelInputMask label="Телефон" form={form} formField="phone" required mask="+7 (999) 999-99-99" type="tel" name="phone" id="phone"/>
-                    
-                    <PasswordInput
+                    <FloatingLabelInputMask
+                      label="Телефон"
+                      form={form}
+                      formField="phone"
+                      required
+                      mask="+7 (999) 999-99-99"
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                    />
+                    <FloatingLabelInputMask
+                      label="Возраст"
+                      form={form}
+                      formField="age"
+                      required
+                      mask="99.99.9999"
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                    />
+
+                   {/*   <PasswordInput
                       mt="md"
                       label="Пароль"
                       placeholder="Пароль"
                       {...form.getInputProps('password')}
                     />
-                    <TextInput label="Имя" placeholder="Имя" {...form.getInputProps('name')} />
+                   <TextInput label="Имя" placeholder="Имя" {...form.getInputProps('name')} />
                     <TextInput
                       mt="md"
                       label="Email"
                       placeholder="Email"
                       {...form.getInputProps('email')}
-                    />
+                  /> */}
                   </Box>
                 </Center>
               </Box>
             </Stepper.Step>
 
-         {/*   <Stepper.Step
+            {/*   <Stepper.Step
               label="Завершение"
               description="Данные приема"
               allowStepSelect={shouldAllowSelectStep(3)}
@@ -580,6 +522,6 @@ export function Appointment() {
           </Box>
         </Box>
       </Box>
-    </>
+    </InnerPageContainer>
   );
 }

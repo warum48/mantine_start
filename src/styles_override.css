@@ -2,13 +2,13 @@
     border-color:#959393;
 }
 
-.mantine-Month-monthCell{
+.appointment .mantine-Month-monthCell{
  padding-left:0.5rem !important;
  padding-right:0.5rem !important;
 }
 
 
-.mantine-DatePicker-calendarHeader{
+.appointment .mantine-DatePicker-calendarHeader{
     max-width: 100%;/*calc(2.25rem * 7 + 0.4375rem)*/
 }
  

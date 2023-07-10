@@ -10,7 +10,8 @@ export enum RoutesTypes {
     ChangePassword = "/changepassword",
     Calendar = "/calendar",
     Orders = "/orders",
-    ExportOrders = "/export_orders",
+    Documents = "/documents",
+    Empty = "/empty",
     //---export:---
     Execution = "/execution",
     Pictures = "/pictures",
