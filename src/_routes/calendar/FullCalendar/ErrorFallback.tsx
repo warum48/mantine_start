@@ -1,4 +1,5 @@
-import { Typography } from "@mui/material";
+//import { Typography } from "@mui/material";
+import {Text} from '@mantine/core'
 
 type TError = {
     error: any;
@@ -11,7 +12,7 @@ type TError = {
     return (
       <div role="alert">
         <>
-          <Typography variant="body2">Ошибка в модуле "календарь"</Typography>
+          <Text c='dimmed'>Ошибка в модуле "календарь"</Text>
           {/*!!<StyledButton onClick={resetErrorBoundary}>Попробовать снова</StyledButton>*/}
         </>
       </div>
