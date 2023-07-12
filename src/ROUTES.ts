@@ -7,6 +7,7 @@ export enum RoutesTypes {
     Home = "/",
     Reports = "/reports",
     Auth = "/auth",
+    Registration = "/registration",
     ChangePassword = "/changepassword",
     Calendar = "/calendar",
     Orders = "/orders",

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FastCommentsCommentWidget } from 'fastcomments-react';
 import { useForm } from '@mantine/form';
-import { NavLink as RouterLink, useSearchParams } from 'react-router-dom';
 
 import {
   TextInput,
@@ -17,12 +16,12 @@ import {
   Box,
   useMantineTheme,
 } from '@mantine/core';
-import { Title1_main } from '../../_styles/headers';
+import { Title1_main, TitleLabel } from '../../_styles/headers';
 import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
 import { FastCommentBlock } from '../../components/FastComment/FastCommentBlock';
-import { RoutesTypes } from 'ROUTES';
+import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
 
-export function Auth() {
+export function Registration() {
   //enticationTitle
   const theme = useMantineTheme();
 
@@ -31,17 +30,18 @@ export function Auth() {
       phone: '',
       password: '',
 
-      /*
+      
         firstName: '',
         middleName: '',
         lastName: '',
         
-        comment: '',
-        
-        firstName_our: '',
+        email: '',
         birthday: '',
   
-        email: '',
+      /*  
+      comment: '',
+       
+        firstName_our: '',
         search: '',
         age: '', //age0-age3
         appointmentType: 'apt0', //apt0-3
@@ -75,7 +75,7 @@ export function Auth() {
 
   return (
     <>
-      <Container size={420} my={40}>
+      <Container size={500} mb={'xl'}>
         {/* <Title
           align="center"
           variant="h4"
@@ -83,37 +83,46 @@ export function Auth() {
         >
           Добро пожаловать!
     </Title> */}
-        <Title1_main align="center">Добро пожаловать!</Title1_main>
-        <Text color="dimmed" size="sm" align="center" mt={5}>
-          Нет аккаунта?{' '}
-          <RouterLink to={RoutesTypes.Registration}>
-          <Anchor size="sm" component="button">
-             Зарегистрироваться
-          </Anchor>
-          </RouterLink>
-        </Text>
+        <Title1_main align="center">Регистрация</Title1_main>
+        
 
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           {/*<TextInput label="Телефон" placeholder="you@yourmail.ru" required />*/}
-          <FloatingLabelInputMask
-            label="Телефон"
-            form={form}
-            formField="phone"
-            required
-            mask="+7 (999) 999-99-99"
-            type="tel"
-            //name="phone"
-            //id="phone"
-          />
-          <PasswordInput label="Пароль" placeholder="Ваш пароль" required mt="md" />
-          <Group position="apart" mt="lg">
-            {/* <Checkbox label="Запомнить меня" /> */}
-            <Anchor component="button" size="sm">
-              Забыли пароль?
-            </Anchor>
-          </Group>
+          <TitleLabel>Ваши данные</TitleLabel>
+          <FloatingLabelInput label="Имя " form={form} formField="firstName" required />
+                    <FloatingLabelInput label="Фамилия " form={form} formField="lastName" required />
+                    <FloatingLabelInput label="Отчество" form={form} formField="middleName" />
+                    <FloatingLabelInput label="Email " form={form} formField="email" required />
+                    {/* <FloatingLabelInput label="Отчество" form={form} formField="middleName" />
+                    } <TextInput
+                      label="Аккаунт пользователя"
+                      placeholder="Аккаунт"
+                      {...form.getInputProps('username')}
+                    />*/}
+                    <FloatingLabelInputMask
+                      label="Телефон "
+                      form={form}
+                      formField="phone"
+                      required
+                      mask="+7 (999) 999-99-99"
+                      type="tel"
+                      //name="phone"
+                      //id="phone"
+                    />
+                    <FloatingLabelInputMask
+                      label="Дата рождения "
+                      form={form}
+                      formField="birthday"
+                      required
+                      mask="99.99.9999"
+                      //type="tel"
+                      
+                    />
+          <PasswordInput label="Пароль (минимум 8 символов)" placeholder="Ваш пароль" required mt="md" />
+          <PasswordInput  placeholder="Повторите пароль" required mt="md" />
+          
           <Button fullWidth mt="xl">
-            Войти
+            Зарегистрироваться
           </Button>
         </Paper>
        

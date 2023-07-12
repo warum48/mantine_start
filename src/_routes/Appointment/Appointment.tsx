@@ -29,7 +29,7 @@ import { IconArrowLeft, IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { UserInfoIcons } from './components/userInfoIcons';
 import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
 import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
-import { Title1_main, TitleLabel, useHeadersStyles } from '../../_styles/headers';
+import { Title1_main, Title2_second, TitleLabel, useHeadersStyles } from '../../_styles/headers';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
 
 
@@ -130,6 +130,7 @@ export function Appointment() {
       comment: '',
       password: '',
       firstName_our: '',
+      birthday: '',
 
       email: '',
       search: '',
@@ -200,7 +201,10 @@ export function Appointment() {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem('user-form', JSON.stringify(form.values));
+    //window.localStorage.setItem('user-form', JSON.stringify(form.values));
+    //!! assign the key password to the variable _ indicating it will be unused
+    const {password: _, ...newObj} = form.values; 
+    window.localStorage.setItem('user-form', JSON.stringify(newObj));
   }, [form.values]);
 
   return (
@@ -210,7 +214,8 @@ export function Appointment() {
       >
         <Box mih={'80vh'}>
           {/*<h4> Записаться на прием </h4>*/}
-          <Title1_main>Записаться на прием</Title1_main>
+          <Title1_main >Записаться на прием</Title1_main>
+          <Space h='xl'/>
 
           <Stepper active={active} breakpoint="sm" onStepClick={setActive}>
             <Stepper.Step
@@ -228,11 +233,10 @@ export function Appointment() {
                 </Text>
   </Title> */}
               <Space h="xl" />
-              <Title>
-                <Text className={classes.title2} component="span" inherit>
+              <Title2_second>
                   Вводные данные
-                </Text>
-              </Title>
+                
+              </Title2_second>
               <Box mb="xl">
                 <Stack mt="xl" mb="xl">
                   <Radio.Group
@@ -418,18 +422,17 @@ export function Appointment() {
                       required
                       mask="+7 (999) 999-99-99"
                       type="tel"
-                      name="phone"
-                      id="phone"
+                      //name="phone"
+                      //id="phone"
                     />
                     <FloatingLabelInputMask
-                      label="Возраст"
+                      label="Дата рождения"
                       form={form}
-                      formField="age"
+                      formField="birthday"
                       required
                       mask="99.99.9999"
-                      type="tel"
-                      name="phone"
-                      id="phone"
+                      //type="tel"
+                      
                     />
 
                    {/*   <PasswordInput

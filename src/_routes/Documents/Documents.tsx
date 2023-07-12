@@ -25,6 +25,7 @@ import {
   Tabs,
   Paper,
   Divider,
+  Badge,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { FastCommentsCommentWidget } from 'fastcomments-react';
@@ -49,11 +50,11 @@ export function Documents() {
   const [value, setValue] = useState<Date | null>(null);
 
   const docsAr = [
-    'Копия карты',
-    'Справка для оформления налогового вычета',
-    'Выписка (после операции)',
-    'Результаты анализов ',
-    'Результаты исследований ',
+    {name:'Копия карты', status:'waiting'},
+    {name:'Справка для оформления налогового вычета', },
+    {name:'Выписка (после операции)',},
+    {name:'Результаты анализов ', status:'ready', readyDate: '12.06.2023'},
+    {name:'Результаты исследований ',},
   ];
 
   const form = useForm({
@@ -77,6 +78,7 @@ export function Documents() {
         <Box mih={'80vh'}>
           {/*<h4> Записаться на прием </h4>*/}
           <Title1_main>Документы</Title1_main>
+          <Space h='xl'/>
           <Text c='dimmed'>В этом разделе личного кабинета вы можете отправить запрос на документы</Text>
           <Space h="xl" />
 
@@ -86,20 +88,21 @@ export function Documents() {
                 value="type1"
                 //icon={<IconPhoto size="0.8rem" />}
               >
-                ТИП 1
+                ЗАПРОСИТЬ ДОКУМЕНТЫ
               </Tabs.Tab>
               <Tabs.Tab
                 value="type2"
                 // icon={<IconMessageCircle size="0.8rem" />}
               >
-                ТИП 2
+                ИСТОРИЯ ЗАПРОСОВ
               </Tabs.Tab>
+              {/*}
               <Tabs.Tab
                 value="type3"
                 // icon={<IconSettings size="0.8rem" />}
               >
                 ТИП 3
-              </Tabs.Tab>
+  </Tabs.Tab> */}
             </Tabs.List>
 
             <Tabs.Panel value="type1" pt="xs">
@@ -114,14 +117,23 @@ export function Documents() {
                     // description="This is anonymous"
                     // withAsterisk
                   >
-                    <Stack mt="md">
+                    <Stack mt="md" >
                         {docsAr.map((item, index)=>(
-                            <Radio value={'doc'+index} label={item} />
+                            <Group key={'doc'+index}>
+                            <Radio value={'doc'+index} label={item.name} />
+                            {item.status && item.status == 'waiting' && 
+                            <Badge color="pink">Запрошен</Badge>}
+                            {item.readyDate &&
+                            <Badge>Выдан {item.readyDate}</Badge> }
+                            </Group>
                         ))}
                       
                       
                     </Stack>
+                    
+                    
                   </Radio.Group>
+                  <Space w='xl'/>
                   <Paper shadow='md' p='md' withBorder 
                   //bg={'white'}
                   >
@@ -144,10 +156,10 @@ export function Documents() {
             <Tabs.Panel value="type2" pt="xs">
               Документы тип 2
             </Tabs.Panel>
-
+{/*
             <Tabs.Panel value="type3" pt="xs">
               Документы тип 3
-            </Tabs.Panel>
+                            </Tabs.Panel> */}
           </Tabs>
         </Box>
       </Box>

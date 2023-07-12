@@ -1,5 +1,7 @@
-import { Title, Text, createStyles, rem } from '@mantine/core';
-import { TChildren } from '../_types/Types';
+import { Title, Text, createStyles, rem, TitleProps } from '@mantine/core';
+import { TAnyFields, TChildren } from '../_types/Types';
+
+type TCustTitle = typeof Title;
 
 export const useHeadersStyles = createStyles((theme) => ({
   title: {
@@ -58,10 +60,28 @@ export const useHeadersStyles = createStyles((theme) => ({
       // lineHeight: 1.15,
     },
   },
+  title4: {
+    color: theme.colors.virilisPink[0], // theme.colors.gray[6], //theme.white,
+
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 400,
+    lineHeight: 1.05,
+    maxWidth: rem(500),
+    fontSize: rem(18),
+    // zIndex:100,
+    position: 'relative',
+    display: 'block',
+
+    [theme.fn.smallerThan('md')]: {
+      maxWidth: '100%',
+      fontSize: rem(14),
+      lineHeight: 1.15,
+    },
+  },
 }));
 
 
-export const TitleLabel = ({ children }: TChildren) => {
+export const TitleLabel = ({ children }: TChildren & TAnyFields) => {
   const { classes, theme } = useHeadersStyles();
 
   return (
@@ -75,10 +95,38 @@ export const TitleLabel = ({ children }: TChildren) => {
   );
 };
 
-export const Title1_main = ({ children }: TChildren) => {
+export const Title2_second = ({ children }: TChildren) => {
+    const { classes, theme } = useHeadersStyles();
+  
+    return (
+        <Title>
+        <Text className={classes.title2} component="span" inherit>
+        {children}
+        </Text>
+      </Title>
+    );
+  };
+
+
+
+export const Title4_second = ({ children }: TChildren) => {
+    const { classes, theme } = useHeadersStyles();
+  
+    return (
+      <Title
+      // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
+      >
+        <Text className={classes.title4} component="span" inherit>
+          {children}
+        </Text>
+      </Title>
+    );
+  };
+
+export const Title1_main = ({ children, ...props }: TitleProps ) => {//TChildren & TAnyFields) => {
   const { classes, theme } = useHeadersStyles();
   return (
-    <Title mb="xl">
+    <Title {...props}>
       <Text
         className={classes.title}
         component="span"

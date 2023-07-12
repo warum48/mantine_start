@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 //------MUI-----
 //import { useTheme } from "@mui/material/styles";
 /*import {
@@ -11,30 +11,28 @@ import React, { useEffect, useState } from "react";
 } from "@mui/material"; */
 //------COMPONENTS----
 
-
-
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
 
 //!!import { GlobalContext } from "_context/ContextGlobal";
-import { ErrorBoundary } from "react-error-boundary";
+import { ErrorBoundary } from 'react-error-boundary';
 
 //import { Calendar, momentLocalizer } from "react-big-calendar";
 //import moment from "moment";
 //import "moment/locale/ru";
-import { formatDate } from "@fullcalendar/core";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid"; // TODO check if I need it
-import timeGridPlugin from "@fullcalendar/timegrid"; // TODO check if I need it
+import { formatDate } from '@fullcalendar/core';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid'; // TODO check if I need it
+import timeGridPlugin from '@fullcalendar/timegrid'; // TODO check if I need it
 //import interactionPlugin from '@fullcalendar/interaction'
-import { INITIAL_EVENTS, createEventId } from "./utils/event-utils";
+import { INITIAL_EVENTS, createEventId } from './utils/event-utils';
 
-import "./fullcalendar.css";
-import ruLocale from "@fullcalendar/core/locales/ru";
-import { gql, useQuery, useReactiveVar } from "@apollo/client";
+import './fullcalendar.css';
+import ruLocale from '@fullcalendar/core/locales/ru';
+import { gql, useQuery, useReactiveVar } from '@apollo/client';
 //import { CalendarFilters } from "_components/Filters/CalendarFilters";
 
-import { renderInnerContent } from "./FullCalendar/renderInnerContent";
-import { rendermoreLinkContent } from "./FullCalendar/rendermoreLinkContent";
+import { renderInnerContent } from './FullCalendar/renderInnerContent';
+import { rendermoreLinkContent } from './FullCalendar/rendermoreLinkContent';
 //import "react-big-calendar/lib/css/react-big-calendar.css";
 //import 'react-big-calendar/lib/addons/dragAndDrop/styles'; // if using DnD
 
@@ -48,13 +46,14 @@ import DialogTitle from "@mui/material/DialogTitle";
 */
 
 //import Checkbox from "@mui/material/Checkbox";
-import { EventInfo } from "./FullCalendar/EventInfo";
+import { EventInfo } from './FullCalendar/EventInfo';
 //import { zIndexMap } from "_zIndexMap";
-import { Helmet } from "react-helmet";
-import { Box, Button, Tooltip } from "@mantine/core";
-import { Title1_main } from "../../_styles/headers";
-import { useCookies } from "react-cookie";
-import { InnerPageContainer } from "../../components/Containers/InnerPageContainer";
+import { Helmet } from 'react-helmet';
+import { Box, Button, Grid, Space, Stack, Tooltip } from '@mantine/core';
+import { Title1_main, Title2_second, Title4_second } from '../../_styles/headers';
+import { useCookies } from 'react-cookie';
+import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
+import { AppointmentItem } from './components/AppointmentItem';
 //import { GET_CALENDAR } from "_apollo/queries/calendar/calendar";
 
 export const CalendarPage = () => {
@@ -65,8 +64,20 @@ export const CalendarPage = () => {
   //!!const { SearchParamsService } = React.useContext(GlobalContext);
   const [calKey, setCalKey] = useState(0);
   const [events, setEvents] = useState([
-    { title: 'событие 1', date: '2023-07-12' },
-    { title: 'событие 2', date: '2023-07-14' }
+    { title: 'Терапевт', date: '2023-07-12', start: '2023-07-12 12:20', end: '2023-07-12 12:40' },
+    { title: 'Массаж', date: '2023-07-12', start: '2023-07-12 12:40', end: '2023-07-12 13:10' },
+    {
+      title: 'Детский Массаж',
+      date: '2023-07-12',
+      start: '2023-07-12 12:40',
+      end: '2023-07-12 13:10',
+    },
+    {
+      title: 'Хирург Хирург',
+      date: '2023-07-14',
+      start: '2023-07-14 15:00',
+      end: '2023-07-14 15:30',
+    },
   ]);
 
   const [eventView, setEventView] = useState(false);
@@ -74,7 +85,16 @@ export const CalendarPage = () => {
 
   const userHasAppointments = true;
 
-/*
+  const mockDoctor = {
+    avatar:
+      'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=80',
+    title: 'Хирург',
+    name: 'Иван Иванович Ивановский',
+    email: 'robert@glassbreaker.io',
+    phone: '+11 (876) 890 56 23',
+  };
+
+  /*
 
 
   useEffect(() => {
@@ -88,9 +108,7 @@ export const CalendarPage = () => {
     setCurEvent(clickInfo.event);
   };
 
- 
-
-/*
+  /*
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_CALENDAR,
     {
@@ -165,16 +183,13 @@ export const CalendarPage = () => {
 
   */
 
-
   return (
     <InnerPageContainer>
-    <Helmet>
-        <title>
-          Календарь
-        </title>
+      <Helmet>
+        <title>Календарь</title>
       </Helmet>
 
-{/*
+      {/*
       <Dialog
         open={eventView}
         onClose={() => setEventView(false)}
@@ -203,70 +218,82 @@ export const CalendarPage = () => {
       </Dialog>
   */}
 
-<Box maw={1200} mx="auto" w={'100%'} 
-      //mt="xl"
+      <Box
+        //maw={1200}
+        mx="auto"
+        w={'100%'}
+        //mt="xl"
       >
-      <Title1_main>Календарь посещений</Title1_main>
-
-
-
-
-        <div className="calendar_page_block2 order_b_calendar">
-          
-
-          <Box
-            key={'index'+cookieToken}
-            className="calendar_page_calendar"
-            maw={1200}
-            //sx={{
-            //mt: { xs: 4, md: 0 },
-            //  mt: 0
-            //}}
-          >
-            {userHasAppointments ? (
-              <Box>
-                {events.length > 0 && (
-                  <FullCalendar
-                    fixedWeekCount={false}
-                    moreLinkContent={rendermoreLinkContent}
-                    key={"ke" + calKey}
-                    plugins={[
-                      dayGridPlugin,
-                      timeGridPlugin,
-                      //interactionPlugin
-                    ]}
-                    headerToolbar={{
-                      left: "prev,next today",
-                      center: "title",
-                      right: "dayGridMonth,timeGridWeek,timeGridDay",
-                    }}
-                    initialView="dayGridMonth"
-                    // editable={true}
-                    selectable={true}
-                    selectMirror={true}
-                    dayMaxEvents={true}
-                    firstDay={1}
-                    locale={ruLocale}
-                    //initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-                    initialEvents={events} //{data.getStKalendar.resultsList}
-                    
-                    eventClick={handleEventClick}
-                        eventContent={(arg) => {
+        <Title1_main>Календарь посещений</Title1_main>
+        <Space h='xl'/>
+        <Grid gutter={'2.5rem'}>
+          <Grid.Col span={4}>
+            <Stack>
+              <Title4_second>Ближайшие записи:</Title4_second>
+              {Array.from(Array(3)).map((item: any, index: number) => (
+                <AppointmentItem timeStart={events[index].start} {...mockDoctor} />
+              ))}
+            </Stack>
+          </Grid.Col>
+          <Grid.Col span={8}>
+            <div
+            // className="calendar_page_block2 order_b_calendar"
+            >
+              <Box
+                key={'index' + cookieToken}
+                className="calendar_page_calendar"
+                maw={1200}
+                //sx={{
+                //mt: { xs: 4, md: 0 },
+                //  mt: 0
+                //}}
+              >
+                {userHasAppointments ? (
+                  <Box>
+                    {events.length > 0 && (
+                      <FullCalendar
+                        fixedWeekCount={false}
+                        //moreLinkContent={rendermoreLinkContent}
+                        key={'ke' + calKey}
+                        plugins={[
+                          dayGridPlugin,
+                          timeGridPlugin,
+                          //interactionPlugin
+                        ]}
+                        headerToolbar={{
+                          left: 'prev,next today',
+                          center: 'title',
+                          right: 'dayGridMonth,timeGridDay', //timeGridWeek,
+                        }}
+                        initialView="dayGridMonth"
+                        // editable={true}
+                        selectable={true}
+                        selectMirror={true}
+                        dayMaxEvents={true}
+                        firstDay={1}
+                        locale={ruLocale}
+                        //initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+                        initialEvents={events} //{data.getStKalendar.resultsList}
+                        eventClick={handleEventClick}
+                        /*eventContent={(arg) => {
                       return (
                         <Tooltip
                          // placement="top"
                           label={
                             arg.event.title
                           }
+                          zIndex={9999}
+                         // sx={{zIndex:9999 + '!important'}}
                           //arrow
+                          //style={{zIndex:9999 + '!important'}}
                         >
                           {renderInnerContent(arg)}
                         </Tooltip>
                       );
-                    }}
-                  />
-                )}
-                {/*
+                    }} */
+                      />
+                    )}
+                    {/*
                 <TableAPIStatus
                   loading={loading}
                   data={data}
@@ -277,15 +304,15 @@ export const CalendarPage = () => {
                   tableArray={events}
                   emptyArrayText="Не найдено событий, удовлетворяющих условиям фильтров"
                   />*/}
+                  </Box>
+                ) : (
+                  <Box>Нет записей</Box>
+                )}
               </Box>
-            ) : (
-              <Box>
-                Нет записей
-              </Box>
-            )}
-          </Box>
-          {/*тут было*/}
-        </div>
+              {/*тут было*/}
+            </div>
+          </Grid.Col>
+        </Grid>
       </Box>
       {/*JSON.stringify(calendarFiltersVar_re)*/}
       {/*

@@ -5,7 +5,7 @@ import { DatePicker } from '@mantine/dates';
 import { IconPhoneCall, IconAt } from '@tabler/icons-react';
 import { useState } from 'react';
 import 'dayjs/locale/ru';
-import { useHeadersStyles } from '../../../_styles/headers';
+import { StyledButton } from '../../../components/Buttons/StyledButton';
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -16,7 +16,7 @@ const useStyles = createStyles((theme) => ({
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
   },
 
-/*  title: {
+  title: {
     color: theme.colors.virilisPink[0], // theme.colors.gray[6], //theme.white,
 
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
@@ -33,23 +33,23 @@ const useStyles = createStyles((theme) => ({
       fontSize: rem(14),
       lineHeight: 1.15,
     },
-  }, */
+  },
 }));
 
 interface UserInfoIconsProps {
   avatar: string;
   name: string;
   title: string;
-  phone: string;
-  email: string;
+  //phone: string;
+  //email: string;
+  timeStart: string;
 }
 
-export function UserInfoIcons({ avatar, name, title, phone, email }: UserInfoIconsProps) {
+export function AppointmentItem({ avatar, name, title, timeStart }: UserInfoIconsProps) {
   const { classes } = useStyles();
-  const {classes : headerClasses } = useHeadersStyles();
   const [expanded, setExpanded] = useState(false);
   return (
-    <Grid.Col span={expanded ? 12 : 6}>
+    
       <Paper
         //maw={700}
         sx={{ position: 'relative' }}
@@ -69,8 +69,7 @@ export function UserInfoIcons({ avatar, name, title, phone, email }: UserInfoIco
         >
           {expanded ? '✕' : '➔'}
         </Button>
-        <Grid>
-        <Grid.Col span="auto">
+       
           <Group noWrap>
             <Avatar src={avatar} size={expanded? 150:80} radius="md" />
             <div>
@@ -83,12 +82,10 @@ export function UserInfoIcons({ avatar, name, title, phone, email }: UserInfoIco
               </Text>
 
               <Text fz="xs" fw={500} className={classes.name}>
-                Есть запись: сегодня, завтра, 10.07, 12.07, 14.07
+               Время приема: {timeStart}
               </Text>
 
-              <Text fz="xs" fw={500} className={classes.name}>
-                Стомость приемв: от 5000 р.
-              </Text>
+              
 
                
               {/*
@@ -109,25 +106,15 @@ export function UserInfoIcons({ avatar, name, title, phone, email }: UserInfoIco
             
           </Group>
           {expanded && <>
-          <Divider mt="xl" mr='xl' mb='sm'/>
-            список услуг
+          <Divider mt="xl" />
+            Услуги на приеме
+            <Divider my="xl" />
+            <StyledButton appearence='main_second'>Отменить запись</StyledButton>
             </>}
-          </Grid.Col>
-          {expanded &&
-          <Grid.Col span='content'>
-            <Box >
-            <Box className={headerClasses.title4}>Записатьcя на прием</Box>
-            <Divider my="sm" />
-            <DatePicker hideWeekdays locale="ru" 
-            mx='-sm'
-             />
-              <Divider my="sm" />
-              <Box>даты</Box> 
-            </Box>
-            </Grid.Col>
-}
-        </Grid>
+          
+         
+       
       </Paper>
-    </Grid.Col>
+    
   );
 }

@@ -31,6 +31,7 @@ import { Auth } from './_routes/Auth/Auth';
 import { CalendarPage } from './_routes/calendar/CalendarPage';
 import { Documents } from './_routes/Documents/Documents';
 import { Empty } from './_routes/Empty/Empty';
+import { Registration } from './_routes/Auth/Registration';
 //
 //import { Home } from "_routes/home/Home";
 //import { Reports } from "_routes/reports/Reports";
@@ -112,6 +113,10 @@ const RootWrapper = () => {
             <Route
               path={RoutesTypes.Auth}
                element={<Auth/>}
+            />
+            <Route
+              path={RoutesTypes.Registration}
+               element={<Registration/>}
             />
           </Route>
         </Routes>

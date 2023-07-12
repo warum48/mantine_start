@@ -2,6 +2,10 @@
     border-color:#959393;
 }
 
+.mantine-Tooltip-tooltip{
+    z-index: 9999 !important;
+}
+
 .appointment .mantine-Month-monthCell{
  padding-left:0.5rem !important;
  padding-right:0.5rem !important;
