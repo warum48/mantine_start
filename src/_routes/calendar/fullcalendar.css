@@ -97,6 +97,10 @@
   -webkit-text-fill-color: transparent;
 }
 
+.fc .fc-toolbar.fc-header-toolbar{
+  margin-bottom: .5rem;
+}
+
 
 
 

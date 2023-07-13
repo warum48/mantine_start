@@ -1,14 +1,55 @@
 import * as React from 'react';
 
-import { Anchor, Box, Group, Space, Stack, Tabs, Text } from '@mantine/core';
+import { Anchor, Box, Divider, Group, PasswordInput, Space, Stack, Tabs, Text } from '@mantine/core';
 
 import { TextInfo, Title1_main, TitleLabel, useHeadersStyles } from '../../_styles/headers';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
 import { NavLink } from 'react-router-dom';
 import { RoutesTypes } from 'ROUTES';
+import { StyledButton } from '../../components/Buttons/StyledButton';
+import { EditableText } from '../../components/Inputs/EditableText';
+import { useState, useCallback } from 'react';
+import {produce} from "immer";
 
 export function Profile() {
-  const userInfo = [
+  //const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {console.log(e)}
+  /*const changeInfo = (text:string, fieldId: string) => {
+    console.log(text, fieldId);
+    //return e;
+  }
+
+  const handleToggle = useCallback((id) => {
+    setTodos(
+      produce((draft) => {
+        const todo = draft.find((todo) => todo.id === id);
+        todo.done = !todo.done;
+      })
+    );
+  }, []); */
+
+  const changeInfo= useCallback((text:string, fieldId: string) => {
+    setUserInfo(
+      produce((draft) => {
+        const item = draft.find((item) => item.field === fieldId);
+        if(item){
+        item.newValue = text;
+        }
+      })
+    );
+  }, []);
+
+  const resetChanges = () => {
+    setUserInfo(
+      produce((draft) => {
+        draft.forEach((item) => {
+          item.newValue = '';
+        });
+      })
+    );
+  };
+
+  const [someValue, setSomeValue] = useState('');
+  const [userInfo, setUserInfo] = useState([
     {
       field: 'secondName',
       name: 'Фамилия',
@@ -70,10 +111,11 @@ export function Profile() {
       newValue: '',
       value: '',
       mask: '',
+      autosize: true
     },
     { field: 'inn', name: 'ИНН', mock: '', required: false, newValue: '', value: '', mask: '' },
     { field: 'snils', name: 'Снилс', mock: '', required: false, newValue: '', value: '', mask: '' },
-  ];
+  ]);
   return (
     <InnerPageContainer>
       <Box
@@ -116,15 +158,31 @@ export function Profile() {
             </Tabs.List>
             <Space h="xl" />
             <Tabs.Panel value="type1" pt="xs">
-              <Stack>
+              <Stack 
+              //w='100%'
+              >
                 {userInfo.map((item, index) => (
-                  <Group>
+                  <Group 
+                  //grow
+                  >
                     <TitleLabel>{item.name}:</TitleLabel>
-                    <TextInfo>{item.mock ? item.mock : '-'}</TextInfo>
+                   {/* <TextInfo>{item.mock ? item.mock : '-'}</TextInfo> */}
+                   <EditableText autosize={item.autosize} text={item.newValue || item.mock} onChange={(e:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => changeInfo(e.currentTarget.value, item.field)}/>
                   </Group>
                 ))}
 
-                <Space h="xl" />
+               
+                <Group>
+                  { userInfo.filter((item:any)=>item.newValue !='').length > 0 &&
+                  <>
+                   <StyledButton appearence={'main_cancel'} maw={150} onClick={resetChanges}>Отмена</StyledButton>
+                <StyledButton appearence={'main_second'} maw={150}>Сохранить</StyledButton>
+                </>
+}
+                </Group>
+                
+                <Divider/>
+                
 
                 <NavLink to={RoutesTypes.Family}>
                   <Anchor size="sm" component="button">
@@ -139,7 +197,14 @@ export function Profile() {
                 </NavLink>
               </Stack>
             </Tabs.Panel>
-            <Tabs.Panel value="type2" pt="xs"> сменить пароль </Tabs.Panel>
+            <Tabs.Panel value="type2" pt="xs"> <Stack maw={320}>
+            <PasswordInput label="Старый пароль" placeholder="Ваш пароль" required mt={'-.25rem'} />
+            <PasswordInput label="Новый пароль (минимум 8 символов)" placeholder="Новый пароль" required mt="md" />
+          <PasswordInput  placeholder="Повторите новый пароль" required 
+         // mt="md" 
+          />
+          <StyledButton appearence={'main_second'} maw={150}>Сохранить</StyledButton>
+              </Stack> </Tabs.Panel>
           </Tabs>
         </Box>
       </Box>

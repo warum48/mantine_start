@@ -79,7 +79,7 @@ export const useHeadersStyles = createStyles((theme) => ({
     },
   },
   basicInfo: {
-    color: theme.colors.gray[7], //theme.white,
+    color: theme.colors.gray[8], //theme.white,
 
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontWeight: 300,

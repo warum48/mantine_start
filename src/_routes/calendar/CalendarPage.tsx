@@ -226,7 +226,7 @@ export const CalendarPage = () => {
       >
         <Title1_main>Календарь посещений</Title1_main>
         <Space h='xl'/>
-        <Grid gutter={'2.5rem'}>
+        <Grid gutter={'2.5rem'} >
           <Grid.Col span={4}>
             <Stack>
               <Title4_second>Ближайшие записи:</Title4_second>
@@ -236,13 +236,12 @@ export const CalendarPage = () => {
             </Stack>
           </Grid.Col>
           <Grid.Col span={8}>
-            <div
-            // className="calendar_page_block2 order_b_calendar"
-            >
+           
               <Box
                 key={'index' + cookieToken}
                 className="calendar_page_calendar"
                 maw={1200}
+                mt={'-1.1rem'}
                 //sx={{
                 //mt: { xs: 4, md: 0 },
                 //  mt: 0
@@ -309,8 +308,7 @@ export const CalendarPage = () => {
                   <Box>Нет записей</Box>
                 )}
               </Box>
-              {/*тут было*/}
-            </div>
+              
           </Grid.Col>
         </Grid>
       </Box>

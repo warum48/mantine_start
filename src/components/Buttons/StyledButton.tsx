@@ -1,13 +1,18 @@
-import { Button } from '@mantine/core';
+import { Button, ButtonProps } from '@mantine/core';
 import { TChildren } from '../Containers/InnerPageContainer';
+import { ReactHTMLElement } from 'react';
 
 type TProps = {
-  appearence?: string;
+  appearence?: 'main_second'|'main_first'|'main_cancel';
   onClick?: React.MouseEventHandler<HTMLButtonElement>; //() => void;
   sx?: any;
 };
 
-export const StyledButton = ({ appearence, onClick, sx = {}, children }: TProps & TChildren) => {
+export const StyledButton = ({ appearence, 
+  onClick, 
+  sx = {}, 
+  children, 
+  ...props }: TProps  & ButtonProps ) => { //& TChildren
   if (appearence == 'main_second') {
     return (
       <Button
@@ -19,6 +24,7 @@ export const StyledButton = ({ appearence, onClick, sx = {}, children }: TProps 
         //mt={40}
         sx={{ borderRadius: '100px', ...sx }}
         onClick={onClick}
+        {...props}
       >
         {children}
       </Button>
@@ -35,6 +41,25 @@ export const StyledButton = ({ appearence, onClick, sx = {}, children }: TProps 
         // mt={40}
         sx={{ borderRadius: '100px', ...sx }}
         onClick={onClick}
+        {...props}
+      >
+        {children}
+      </Button>
+    );
+  }
+
+  if (appearence == 'main_cancel') {
+    return (
+      <Button
+        variant="outline"
+       // gradient={{ from: '#01868a', to: '#0dab5f' }}
+        size="md"
+        // size="xl"
+        //className={classes.control}
+        // mt={40}
+        sx={{ borderRadius: '100px', ...sx }}
+        onClick={onClick}
+        {...props}
       >
         {children}
       </Button>
