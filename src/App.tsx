@@ -73,6 +73,7 @@ export function App() {
             hiddenBreakpoint="sm"
             hidden={!opened}
             width={{ sm: 280, lg: 350 }}
+            sx={{background: 'linear-gradient(38deg, rgba(223, 2, 120, 0.15) 0%, rgba(255,47,184,0) 37%)'}}
           />
         ) : undefined
       }

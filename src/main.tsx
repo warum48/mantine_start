@@ -32,6 +32,19 @@ import { CalendarPage } from './_routes/calendar/CalendarPage';
 import { Documents } from './_routes/Documents/Documents';
 import { Empty } from './_routes/Empty/Empty';
 import { Registration } from './_routes/Auth/Registration';
+
+import {
+  IconNotes,
+  IconCalendarStats,
+  IconGauge,
+  IconPresentationAnalytics,
+  IconFileAnalytics,
+  IconAdjustments,
+  IconLock,
+} from '@tabler/icons-react';
+import { Payments } from './_routes/Payments/Payments';
+import { Profile } from './_routes/Profile/Profile';
+import { Family } from './_routes/Family/Family';
 //
 //import { Home } from "_routes/home/Home";
 //import { Reports } from "_routes/reports/Reports";
@@ -52,10 +65,104 @@ import { Registration } from './_routes/Auth/Registration';
 //import { ExportOrders } from "_routes/export/Orders";
 //import OrderDetails from "_routes/orders/details/OrderDetails";
 
-export type Foo = {
-  /** some bar property **/
-  bar: string;
-};
+export const pages = [
+  { label: 'Главная', icon: IconGauge, link: '/' },
+  {
+    label: 'Записаться на прием',
+    icon: IconCalendarStats,
+    link: RoutesTypes.Appointment
+   /* links: [
+      { label: 'Upcoming releases', link: '/' },
+      { label: 'Previous releases', link: '/' },
+      { label: 'Releases schedule', link: '/' },
+    ],*/
+  },
+
+  {
+    label: 'Личный кабинет / регистрация',
+    icon: IconAdjustments,
+    link: RoutesTypes.Auth
+  }
+  ,
+
+  {
+    label: 'Календарь посещений',
+    icon: IconAdjustments,
+    link: RoutesTypes.Calendar
+  }
+  ,
+
+  {
+    label: 'Документы',
+    icon: IconAdjustments,
+    link: RoutesTypes.Documents
+  },
+
+  {
+    label: 'Платежи',
+    icon: IconAdjustments,
+    link: RoutesTypes.Payments
+  },
+
+  {
+    label: 'Профиль',
+    icon: IconAdjustments,
+    link: RoutesTypes.Profile
+  },
+
+  {
+    label: 'Моя семья',
+    icon: IconAdjustments,
+    link: RoutesTypes.Family
+  },
+/*
+  {
+    label: 'Результаты исследований',
+    icon: IconAdjustments,
+    link: RoutesTypes.Empty
+  },
+
+  {
+    label: 'Члены семьи',
+    icon: IconAdjustments,
+    link: RoutesTypes.Empty
+  },
+
+  {
+    label: 'История',
+    icon: IconAdjustments,
+    link: RoutesTypes.Empty
+  },
+  */
+
+  /*
+  {
+    label: 'Раздел с подразделами',
+    icon: IconNotes,
+    initiallyOpened: false,
+    links: [
+      { label: 'Один', link: '/' },
+      { label: 'Два', link: '/' },
+      { label: 'Три', link: '/' },
+      { label: 'Четыре', link: '/' },
+    ],
+  },*/
+
+  /*
+  { label: 'Analytics', icon: IconPresentationAnalytics },
+  { label: 'Contracts', icon: IconFileAnalytics },
+  { label: 'Settings', icon: IconAdjustments },
+  {
+    label: 'Security',
+    icon: IconLock,
+    links: [
+      { label: 'Enable 2FA', link: '/' },
+      { label: 'Change password', link: '/' },
+      { label: 'Recovery codes', link: '/' },
+    ],
+  },
+  */
+];
 
 const RootWrapper = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -117,6 +224,18 @@ const RootWrapper = () => {
             <Route
               path={RoutesTypes.Registration}
                element={<Registration/>}
+            />
+            <Route
+              path={RoutesTypes.Payments}
+               element={<Payments/>}
+            />
+            <Route
+              path={RoutesTypes.Profile}
+               element={<Profile/>}
+            />
+            <Route
+              path={RoutesTypes.Family}
+               element={<Family/>}
             />
           </Route>
         </Routes>

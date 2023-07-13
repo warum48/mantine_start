@@ -1,100 +1,14 @@
 import { Navbar, Group, Code, ScrollArea, createStyles, rem } from '@mantine/core';
-import {
-  IconNotes,
-  IconCalendarStats,
-  IconGauge,
-  IconPresentationAnalytics,
-  IconFileAnalytics,
-  IconAdjustments,
-  IconLock,
-} from '@tabler/icons-react';
+
 import { UserButton } from '../UserButton/UserButton';
 //import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
 //import { Logo } from './Logo';
 import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
 import { Logo } from '../Logo/Logo';
 import { RoutesTypes } from 'ROUTES';
+import { pages } from '../../main';
 
-const mockdata = [
-  { label: 'Главная', icon: IconGauge, link: '/' },
-  {
-    label: 'Записаться на прием',
-    icon: IconCalendarStats,
-    link: RoutesTypes.Appointment
-   /* links: [
-      { label: 'Upcoming releases', link: '/' },
-      { label: 'Previous releases', link: '/' },
-      { label: 'Releases schedule', link: '/' },
-    ],*/
-  },
 
-  {
-    label: 'Личный кабинет / регистрация',
-    icon: IconAdjustments,
-    link: RoutesTypes.Auth
-  }
-  ,
-
-  {
-    label: 'Календарь посещений',
-    icon: IconAdjustments,
-    link: RoutesTypes.Calendar
-  }
-  ,
-
-  {
-    label: 'Документы',
-    icon: IconAdjustments,
-    link: RoutesTypes.Documents
-  },
-/*
-  {
-    label: 'Результаты исследований',
-    icon: IconAdjustments,
-    link: RoutesTypes.Empty
-  },
-
-  {
-    label: 'Члены семьи',
-    icon: IconAdjustments,
-    link: RoutesTypes.Empty
-  },
-
-  {
-    label: 'История',
-    icon: IconAdjustments,
-    link: RoutesTypes.Empty
-  },
-  */
-
-  /*
-  {
-    label: 'Раздел с подразделами',
-    icon: IconNotes,
-    initiallyOpened: false,
-    links: [
-      { label: 'Один', link: '/' },
-      { label: 'Два', link: '/' },
-      { label: 'Три', link: '/' },
-      { label: 'Четыре', link: '/' },
-    ],
-  },*/
-
-  /*
-  { label: 'Analytics', icon: IconPresentationAnalytics },
-  { label: 'Contracts', icon: IconFileAnalytics },
-  { label: 'Settings', icon: IconAdjustments },
-  {
-    label: 'Security',
-    icon: IconLock,
-    links: [
-      { label: 'Enable 2FA', link: '/' },
-      { label: 'Change password', link: '/' },
-      { label: 'Recovery codes', link: '/' },
-    ],
-  },
-  */
-];
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -129,12 +43,14 @@ const useStyles = createStyles((theme) => ({
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
+    //backgroundColor:'white'
+    //
   },
 }));
 
 export function NavbarNested({...props}) {
   const { classes } = useStyles();
-  const links = mockdata.map((item) => <LinksGroup {...item}  key={item.label} />);
+  const links = pages.map((item) => <LinksGroup {...item}  key={item.label} />);
 
   return (
     <Navbar 

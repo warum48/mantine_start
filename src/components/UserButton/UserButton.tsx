@@ -14,9 +14,11 @@ import {
       width: '100%',
       padding: theme.spacing.md,
       color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+      background: 'linear-gradient(132deg, #d8fde5 0%, rgba(255,255,255,1) 50%)',
   
       '&:hover': {
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        background:'white'
+        //backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : 'white'// theme.colors.gray[0],
       },
     },
   }));

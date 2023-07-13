@@ -12,6 +12,9 @@ export enum RoutesTypes {
     Calendar = "/calendar",
     Orders = "/orders",
     Documents = "/documents",
+    Payments = "/payments",
+    Family = "/family",
+    Profile = "/profile",
     Empty = "/empty",
     //---export:---
     Execution = "/execution",

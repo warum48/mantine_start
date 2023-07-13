@@ -78,6 +78,24 @@ export const useHeadersStyles = createStyles((theme) => ({
       lineHeight: 1.15,
     },
   },
+  basicInfo: {
+    color: theme.colors.gray[7], //theme.white,
+
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 300,
+    lineHeight: 1.05,
+    maxWidth: rem(600),
+    fontSize: '0.875rem', //rem(24),
+    // zIndex:100,
+    position: 'relative',
+    display: 'block',
+
+    [theme.fn.smallerThan('md')]: {
+      // maxWidth: '100%',
+      // fontSize: rem(20),
+      // lineHeight: 1.15,
+    },
+  },
 }));
 
 
@@ -89,6 +107,20 @@ export const TitleLabel = ({ children }: TChildren & TAnyFields) => {
     // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
     >
       <Text className={classes.title3} component="span" inherit>
+        {children}
+      </Text>
+    </Title>
+  );
+};
+
+export const TextInfo = ({ children }: TChildren & TAnyFields) => {
+  const { classes, theme } = useHeadersStyles();
+
+  return (
+    <Title
+    // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
+    >
+      <Text className={classes.basicInfo} component="span" inherit>
         {children}
       </Text>
     </Title>
