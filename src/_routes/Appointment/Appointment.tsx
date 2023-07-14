@@ -29,11 +29,14 @@ import { IconArrowLeft, IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { UserInfoIcons } from './components/userInfoIcons';
 import { FloatingLabelInput } from '../../components/Inputs/FloatingLabelInput';
 import { FloatingLabelInputMask } from '../../components/Inputs/FloatingLabelInputMask';
-import { Title1_main, Title2_second, TitleLabel, useHeadersStyles } from '../../_styles/headers';
+import {
+  TextInfo,
+  Title1_main,
+  Title2_second,
+  TitleLabel,
+  useHeadersStyles,
+} from '../../_styles/headers';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
-
-
-
 
 export function Appointment() {
   const [active, setActive] = useState(0);
@@ -47,12 +50,13 @@ export function Appointment() {
   const [valueAdress, setValueAdress] = useState<string[]>([]);
 
   const addressAr = [
-    'Ленинский пр., д. 108, корп. 1',
-    'Проспект Ветеранов · 1,9 км',
-    'Ленинский проспект · 2,3 км',
-    'Автово · 2,7 км',
-    'Ленинский пр., д. 108, корп. 1',
-    'Проспект Ветеранов · 1,9 км',
+    {name: "ДМЦ «Мамарада»", address:"Большевиков пр.,д.7,корп.3, Санкт-Петербург"},
+{name: "ДМЦ «Аква-Доктор»", address:"СПб, Богатырский пр. д. 26 к.1"},
+{name: "«Аква-Доктор Плавание»", address:"СПб, Богатырский пр. д. 22 к.1"},
+{name: "ДМЦ «Вирилис»", address:"СПб, Ленинский пр. д. 108 к.1"},
+{name: "ДМЦ «ОННИ»", address:"СПб, пр. Просвещения, д.ЗЗ к.2"},
+{name: "ДМЦ «ЧудоДети»", address:"СПб, Бухарестская ул. дом 80"},
+{name: "МЦ «Камала»", address:"СПб, Морская набережная, дом 21"},
   ];
 
   const profAr = [
@@ -203,19 +207,22 @@ export function Appointment() {
   useEffect(() => {
     //window.localStorage.setItem('user-form', JSON.stringify(form.values));
     //!! assign the key password to the variable _ indicating it will be unused
-    const {password: _, ...newObj} = form.values; 
+    const { password: _, ...newObj } = form.values;
     window.localStorage.setItem('user-form', JSON.stringify(newObj));
   }, [form.values]);
 
   return (
-    <InnerPageContainer className='appointment'>
-      <Box maw={1200} mx="auto" w={'100%'} 
-      //mt="xl"
+    <InnerPageContainer className="appointment">
+      <Box
+        maw={1200}
+        mx="auto"
+        w={'100%'}
+        //mt="xl"
       >
         <Box mih={'80vh'}>
           {/*<h4> Записаться на прием </h4>*/}
-          <Title1_main >Записаться на прием</Title1_main>
-          <Space h='xl'/>
+          <Title1_main>Записаться на прием</Title1_main>
+          <Space h="xl" />
 
           <Stepper active={active} breakpoint="sm" onStepClick={setActive}>
             <Stepper.Step
@@ -233,10 +240,7 @@ export function Appointment() {
                 </Text>
   </Title> */}
               <Space h="xl" />
-              <Title2_second>
-                  Вводные данные
-                
-              </Title2_second>
+              <Title2_second>Вводные данные</Title2_second>
               <Box mb="xl">
                 <Stack mt="xl" mb="xl">
                   <Radio.Group
@@ -294,12 +298,30 @@ export function Appointment() {
                     <Group spacing="xl">
                       <Stack spacing="xs">
                         {addressAr.slice(0, 3).map((item, index) => (
-                          <Checkbox value={'ad' + index} label={item} />
+                          <Checkbox
+                            value={'ad' + index}
+                            //label={item}
+                            label={
+                              <>
+                                <TitleLabel>{item.name}</TitleLabel>
+                                <Space h='xs'/>
+                                <TextInfo>{item.address}</TextInfo>
+                                <Space h='xs'/>
+                              </>
+                            }
+                          />
                         ))}
                       </Stack>
                       <Stack spacing="xs">
                         {addressAr.slice(3, 6).map((item, index) => (
-                          <Checkbox value={'ad' + (index + 3)} label={item} />
+                          <Checkbox value={'ad' + (index + 3)} label={
+                            <>
+                              <TitleLabel>{item.name}</TitleLabel>
+                              <Space h='xs'/>
+                              <TextInfo>{item.address}</TextInfo>
+                              <Space h='xs'/>
+                            </>
+                          } />
                         ))}
                       </Stack>
                     </Group>
@@ -432,10 +454,9 @@ export function Appointment() {
                       required
                       mask="99.99.9999"
                       //type="tel"
-                      
                     />
 
-                   {/*   <PasswordInput
+                    {/*   <PasswordInput
                       mt="md"
                       label="Пароль"
                       placeholder="Пароль"
