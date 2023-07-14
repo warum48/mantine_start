@@ -6,6 +6,7 @@ import { IconPhoneCall, IconAt } from '@tabler/icons-react';
 import { useState } from 'react';
 import 'dayjs/locale/ru';
 import { useHeadersStyles } from '../../../_styles/headers';
+import { FMInfo } from './FMInfo';
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -72,15 +73,17 @@ export function FamilyMember({ avatar, name, title, phone, email }: UserInfoIcon
         <Grid>
         <Grid.Col span="auto">
           <Group noWrap>
-            <Avatar src={avatar} size={expanded? 150:80} radius="md" />
+         {/*   <Avatar src={avatar} size={expanded? 150:80} radius="md" /> */}
             <div>
-              <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
+            {/*  <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
                 {title}
               </Text>
 
               <Text fz="lg" fw={500} className={classes.name}>
                 {name}
               </Text>
+
+  */}
 
              
 
@@ -102,18 +105,12 @@ export function FamilyMember({ avatar, name, title, phone, email }: UserInfoIcon
             </div>
             
           </Group>
-          {expanded && <>
-          <Divider mt="xl" mr='xl' mb='sm'/>
-            подробные данные
-            </>}
-          </Grid.Col>
-          {expanded &&
-          <Grid.Col span='content'>
-            <Box >
+         
+          
+            <FMInfo expanded={expanded}/>
             
-            </Box>
-            </Grid.Col>
-}
+          </Grid.Col>
+          
         </Grid>
       </Paper>
     </Grid.Col>

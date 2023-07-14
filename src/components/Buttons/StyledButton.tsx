@@ -19,7 +19,7 @@ export const StyledButton = ({ appearence,
         variant="gradient"
        // gradient={{ from: 'pink', to: '#ff3ebb' }}
         gradient={{ from: 'pink', to: '#fd55d0' }}
-        size="md"
+        size="sm"
         //className={classes.control}
         //mt={40}
         sx={{ borderRadius: '100px', ...sx }}
@@ -35,7 +35,7 @@ export const StyledButton = ({ appearence,
       <Button
         variant="gradient"
         gradient={{ from: '#01868a', to: '#0dab5f' }}
-        size="md"
+        size="sm"
         // size="xl"
         //className={classes.control}
         // mt={40}
@@ -53,7 +53,7 @@ export const StyledButton = ({ appearence,
       <Button
         variant="outline"
        // gradient={{ from: '#01868a', to: '#0dab5f' }}
-        size="md"
+       size="sm"
         // size="xl"
         //className={classes.control}
         // mt={40}

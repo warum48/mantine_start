@@ -6,6 +6,8 @@ import { Title1_main, TitleLabel, useHeadersStyles } from '../../_styles/headers
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
 import { FamilyMember } from './components/FamilyMember';
 import { StyledButton } from '../../components/Buttons/StyledButton';
+import { useState } from 'react';
+import { AddForm } from './components/AddForm';
 
 const mockDoctor = {
   avatar:
@@ -17,11 +19,13 @@ const mockDoctor = {
 };
 
 export function Family() {
+  const [addMemberOpen, setAddMemberOpen] = useState(false);
+
   return (
     <InnerPageContainer>
       <Box
-       // maw={1200}
-        mx="auto"
+        maw={960}
+        // mx="auto"
         w={'100%'}
         //mt="xl"
       >
@@ -30,13 +34,22 @@ export function Family() {
           <Title1_main>Моя семья</Title1_main>
           <Space h="xl" />
           <Grid>
-                    {Array.from(Array(3)).map((item: any, index: number) => (
-                      <FamilyMember {...mockDoctor} />
-                    ))}
-                  </Grid>
-                  <Space h="xl" />
-                  <StyledButton appearence={'main_second'} >Добавить родственника</StyledButton>
+            {Array.from(Array(3)).map((item: any, index: number) => (
+              <FamilyMember {...mockDoctor} key={'fm'+index} />
+            ))}
+          </Grid>
+         
 
+          {addMemberOpen ? (
+            <AddForm setAddMemberOpen={setAddMemberOpen}/>
+          ) : (
+            <>
+            <Space h="xl" />
+            <StyledButton appearence={'main_second'} onClick={() => setAddMemberOpen(true)}>
+              Добавить родственника
+            </StyledButton>
+            </>
+          )}
         </Box>
       </Box>
     </InnerPageContainer>

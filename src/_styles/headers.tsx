@@ -78,6 +78,24 @@ export const useHeadersStyles = createStyles((theme) => ({
       lineHeight: 1.15,
     },
   },
+  title5: {
+    color: theme.colors.oceanBlue[8], // theme.colors.gray[6], //theme.white,
+
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 400,
+    lineHeight: 1.05,
+    maxWidth: rem(500),
+    fontSize: rem(18),
+    // zIndex:100,
+    position: 'relative',
+    display: 'block',
+
+    [theme.fn.smallerThan('md')]: {
+      maxWidth: '100%',
+      fontSize: rem(14),
+      lineHeight: 1.15,
+    },
+  },
   basicInfo: {
     color: theme.colors.gray[8], //theme.white,
 
@@ -96,7 +114,33 @@ export const useHeadersStyles = createStyles((theme) => ({
       // lineHeight: 1.15,
     },
   },
+
+  name: {
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+  },
 }));
+
+
+export const Card_pretitle = ({ children }: TChildren) => {
+  const { classes, theme } = useHeadersStyles();
+
+  return (
+<Text fz="xs" tt="uppercase" fw={700} c="dimmed">
+                {children}
+              </Text>
+
+              
+  )
+}
+
+export const Card_title = ({ children }: TChildren) => {
+  const { classes, theme } = useHeadersStyles();
+
+  return (
+<Text fz="lg" fw={500} className={classes.name}>
+                {children}
+              </Text>)
+}
 
 
 export const TitleLabel = ({ children }: TChildren & TAnyFields) => {
@@ -149,6 +193,20 @@ export const Title4_second = ({ children }: TChildren) => {
       // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
       >
         <Text className={classes.title4} component="span" inherit>
+          {children}
+        </Text>
+      </Title>
+    );
+  };
+
+  export const Title4_main = ({ children }: TChildren) => {
+    const { classes, theme } = useHeadersStyles();
+  
+    return (
+      <Title
+      // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
+      >
+        <Text className={classes.title5} component="span" inherit>
           {children}
         </Text>
       </Title>

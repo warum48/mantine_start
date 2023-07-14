@@ -41,6 +41,7 @@ import { Outlet } from 'react-router-dom';
 import { DemoGuestSwitcher } from './components/Debug/GuestSwitch';
 import { useCookies } from 'react-cookie';
 import { DemoLogIn } from './components/Debug/LogIn';
+import { AsideComp } from './_routes/Home/components/Aside';
 //import { Logo } from './_logo';
 
 export function App() {
@@ -77,13 +78,14 @@ export function App() {
           />
         ) : undefined
       }
-      /*aside={
+      aside={ true ? undefined : 
         <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-          <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+          {/*<Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
             <Text>Application sidebar</Text>
-          </Aside>
+      </Aside>*/}
+      <AsideComp/>
         </MediaQuery>
-      }*/
+      }
       /* footer={
         <Footer height={60} p="md" fixed={false}>
           Лицензия и все прочее
