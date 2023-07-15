@@ -58,12 +58,13 @@ export function App() {
           background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, rgba(255,255,255,1) 20%)',
           paddingLeft: 'calc(var(--mantine-navbar-width, 0) )', //+ 1rem
           paddingTop: 'calc(var(--mantine-header-height, 0)  + 0.5rem)', //
+         // paddingRight: {{ sm: 200, lg: 300 }},
         },
       }}
       //padding='0'
 
-      navbarOffsetBreakpoint="sm"
-      asideOffsetBreakpoint="sm"
+      navbarOffsetBreakpoint="0" //sm
+      asideOffsetBreakpoint='0'//"sm"
       navbar={
         //<Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
 

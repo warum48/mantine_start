@@ -10,6 +10,8 @@ import {
   Stack,
   Tabs,
   Text,
+  Tooltip,
+  useMantineTheme,
 } from '@mantine/core';
 
 import {
@@ -27,11 +29,13 @@ import { StyledButton } from '../../../components/Buttons/StyledButton';
 import { EditableText } from '../../../components/Inputs/EditableText';
 import { useState, useCallback } from 'react';
 import { produce } from 'immer';
+import { IconCrown } from '@tabler/icons-react';
 
 type TProps = {
   expanded: boolean;
 };
 export function FMInfo({ expanded }: TProps) {
+    const theme = useMantineTheme();
   //const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {console.log(e)}
   /*const changeInfo = (text:string, fieldId: string) => {
     console.log(text, fieldId);
@@ -176,11 +180,14 @@ export function FMInfo({ expanded }: TProps) {
   ]);
   return (
     <>
+    <Group>
       <Card_pretitle>
         {userInfo.find((obj) => obj.field == 'type')?.newValue ||
           userInfo.find((obj) => obj.field == 'type')?.mock}
       </Card_pretitle>
-
+      <Tooltip label="Главный юзер" color={theme.colors.virilisPink[0]}>
+<IconCrown color="pink"/></Tooltip>
+</Group>
       <Card_title>
         {userInfo.find((obj) => obj.field == 'lseconName')?.newValue ||
           userInfo.find((obj) => obj.field == 'secondName')?.mock}
@@ -202,7 +209,7 @@ export function FMInfo({ expanded }: TProps) {
               //grow
               key={'fi'+index}
               >
-                <TitleLabel>{item.name}:</TitleLabel>
+                <TitleLabel>{item.name}:</TitleLabel> 
                 {/* <TextInfo>{item.mock ? item.mock : '-'}</TextInfo> */}
                 <EditableText
                   autosize={item.autosize}
