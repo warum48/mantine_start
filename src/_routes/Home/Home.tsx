@@ -114,15 +114,17 @@ export const Home = () => {
               marginBottom: '1rem',
               padding: '5rem',
               paddingTop: '4rem',
+              overflow:'hidden',
              // overflow:'hidden'
               position:'relative'
               //opacity:'.3' ,transform: 'scaleX(-1)', backgroundBlendMode: 'saturation', linearGradient:'(black, black)', filter: 'grayscale(100%);'
             }}
             //height={SECONDARY_COL_HEIGHT}
           >
-            <Box sx={{position:'absolute', top:0, left:0, bottom:0, right:0, 
+            <Box sx={{position:'absolute', top:0, left:0, bottom:0, right:0, overflow:'hidden', border:'20px',
             //zIndex:1,
-            background:'linear-gradient(114deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.60) 42%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)'//'white'
+           // background:'linear-gradient(114deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.60) 42%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)'//'white'
+            background:'linear-gradient(114deg, rgb(255, 255, 255) 0%, rgba(255,255,255,0.90) 42%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)'//'white'
             }}></Box>
             <Title className={classes.title}>
               {' '}
@@ -227,7 +229,7 @@ export const Home = () => {
             </Card>
             <Grid gutter="md">
               <Grid.Col>
-              <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} opacity={.5}/>
+              <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} opacity={1} sx={{backgroundColor:'white', '&:after':{backgroundColor:'white'}}}/>
                 
                 {/*   
                 <Box sx={{ height: SECONDARY_COL_HEIGHT }}> mmm</Box>
@@ -249,10 +251,10 @@ export const Home = () => {
   </Card> */}
               </Grid.Col>
               <Grid.Col span={6}>
-                <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} opacity={.5}/>
+                <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} opacity={1} color='white' sx={{backgroundColor:'white', '&:after':{backgroundColor:'white'}}}/>
               </Grid.Col>
               <Grid.Col span={6}>
-                <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} opacity={.5}/>
+                <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} opacity={1} sx={{backgroundColor:'white', '&:after':{backgroundColor:'white'}}}/>
               </Grid.Col>
             </Grid>
           </SimpleGrid>

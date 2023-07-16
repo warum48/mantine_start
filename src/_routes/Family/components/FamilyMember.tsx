@@ -54,7 +54,7 @@ export function FamilyMember({ avatar, name, title, phone, email }: UserInfoIcon
       <Paper
         //maw={700}
         sx={{ position: 'relative' }}
-        shadow="xs"
+       // shadow="xs"
         p={ expanded?  'xl' :"xs"}
         withBorder
         //w={expanded ? '100%':'50%'}

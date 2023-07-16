@@ -124,7 +124,10 @@ export function Profile() {
         w={'100%'}
         //mt="xl"
       >
-        <Box mih={'80vh'}>
+        <Box 
+       // mih={'80vh'}
+       pb='xl'
+        >
           {/*<h4> Записаться на прием </h4>*/}
           <Title1_main>Профиль</Title1_main>
           <Space h="xl" />

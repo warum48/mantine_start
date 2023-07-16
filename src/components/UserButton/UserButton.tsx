@@ -14,7 +14,7 @@ import {
       width: '100%',
       padding: theme.spacing.md,
       color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
-      background: 'linear-gradient(132deg, #d8fde5 0%, rgba(255,255,255,1) 50%)',
+      background: 'linear-gradient(132deg, #d8fdfc 0%, rgba(255,255,255,1) 50%)',
   
       '&:hover': {
         background:'white'

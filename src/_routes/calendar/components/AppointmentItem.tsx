@@ -6,6 +6,7 @@ import { IconPhoneCall, IconAt } from '@tabler/icons-react';
 import { useState } from 'react';
 import 'dayjs/locale/ru';
 import { StyledButton } from '../../../components/Buttons/StyledButton';
+import { innerPageMaxWidth } from '../../../CONSTS';
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -56,6 +57,8 @@ export function AppointmentItem({ avatar, name, title, timeStart }: UserInfoIcon
         shadow="xs"
         p={ expanded?  'xl' :"xs"}
         withBorder
+        miw={expanded ? '100%' : ((innerPageMaxWidth  / 2 ) -32) }//448}
+
         //w={expanded ? '100%':'50%'}
         //miw={expanded ? '100%':300}
         //mih={expanded ? 400 : 0}

@@ -49,7 +49,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { EventInfo } from './FullCalendar/EventInfo';
 //import { zIndexMap } from "_zIndexMap";
 import { Helmet } from 'react-helmet';
-import { Box, Button, Grid, Space, Stack, Tooltip } from '@mantine/core';
+import { Box, Button, Grid, Group, Space, Stack, Tooltip } from '@mantine/core';
 import { Title1_main, Title2_second, Title4_second } from '../../_styles/headers';
 import { useCookies } from 'react-cookie';
 import { InnerPageContainer } from '../../components/Containers/InnerPageContainer';
@@ -227,16 +227,18 @@ export const CalendarPage = () => {
         <Title1_main>Календарь посещений</Title1_main>
         <Space h='xl'/>
         <Grid gutter={'2.5rem'} >
-          <Grid.Col span={4}>
-            <Stack>
-              <Title4_second>Ближайшие записи:</Title4_second>
+          <Grid.Col span={12}>
+          <Title4_second>Ближайшие записи:</Title4_second>
+          <Space h='xl'></Space>
+            <Group grow>
+              
               {Array.from(Array(3)).map((item: any, index: number) => (
                 <AppointmentItem timeStart={events[index].start} {...mockDoctor} />
               ))}
-            </Stack>
+            </Group>
           </Grid.Col>
-          <Grid.Col span={8}>
-           
+          <Grid.Col span={12}>
+           <Space h='xl'/>
               <Box
                 key={'index' + cookieToken}
                 className="calendar_page_calendar"

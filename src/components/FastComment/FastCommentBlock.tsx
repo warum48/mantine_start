@@ -6,7 +6,9 @@ export function FastCommentBlock() {
   //enticationTitle
   const theme = useMantineTheme();
 
-  return (
+  return null;
+
+  return ( 
     <Box
       // mx="xl"
       ml="-1px"

@@ -1,0 +1,1 @@
+export const innerPageMaxWidth = 960;

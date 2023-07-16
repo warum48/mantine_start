@@ -72,7 +72,9 @@ export function Documents() {
         w={'100%'}
         //mt="xl"
       >
-        <Box mih={'80vh'}>
+        <Box 
+       // mih={'80vh'}
+        >
           {/*<h4> Записаться на прием </h4>*/}
           <Title1_main>Документы</Title1_main>
           <Space h="xl" />

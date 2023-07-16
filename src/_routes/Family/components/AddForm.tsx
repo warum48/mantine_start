@@ -104,7 +104,9 @@ default:''
     </Title> */}
        
 
-        <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+        <Paper withBorder 
+        //shadow="xs" 
+        p={30} mt={30} radius="md">
         <Title4_second>Добавить родственника</Title4_second>
             <Grid> <Grid.Col md={6} xs={12}>
        

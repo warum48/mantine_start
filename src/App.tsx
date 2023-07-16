@@ -55,7 +55,11 @@ export function App() {
         main: {
           // background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
           //background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'white',
-          background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, rgba(255,255,255,1) 20%)',
+          //background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, rgba(255,255,255,1) 20%)',
+        //  to bright background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, #c9f5fa 20%)',
+        // !! good - background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, #e8fdff 20%)',
+        //background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #e8fdff 50% , #ede8ff 100% ) ',
+        background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #effeff 50% , #ede8ff 100% ) ',
           paddingLeft: 'calc(var(--mantine-navbar-width, 0) )', //+ 1rem
           paddingTop: 'calc(var(--mantine-header-height, 0)  + 0.5rem)', //
          // paddingRight: {{ sm: 200, lg: 300 }},
@@ -75,7 +79,9 @@ export function App() {
             hiddenBreakpoint="sm"
             hidden={!opened}
             width={{ sm: 280, lg: 350 }}
-            sx={{background: 'linear-gradient(38deg, rgba(223, 2, 120, 0.15) 0%, rgba(255,47,184,0) 37%)'}}
+           // sx={{background: 'linear-gradient(38deg, #fccbf0 0%, #ffffff 37%)'}}
+           // sx={{background: 'linear-gradient(18deg, #ffddf6 0%, #ffffff 27%)'}}
+            sx={{background: 'linear-gradient(28deg, #ddfdff 0%, #ffffff 37%)'}}
           />
         ) : undefined
       }
