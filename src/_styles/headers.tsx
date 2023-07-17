@@ -184,6 +184,21 @@ export const Title2_second = ({ children }: TChildren) => {
   };
 
 
+  export const Title2_main = ({ children }: TChildren) => {
+    const { classes, theme } = useHeadersStyles();
+  
+    return (
+        <Title>
+        <Text className={classes.title2} component="span" inherit 
+         variant="gradient"
+        gradient={{ from: '#01868a', to: '#0dbc68' }}>
+        {children}
+        </Text>
+      </Title>
+    );
+  };
+
+
 
 export const Title4_second = ({ children }: TChildren) => {
     const { classes, theme } = useHeadersStyles();

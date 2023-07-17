@@ -84,8 +84,8 @@ export function App() {
             width={{ sm: 280, lg: 350 }}
            // sx={{background: 'linear-gradient(38deg, #fccbf0 0%, #ffffff 37%)'}}
            // sx={{background: 'linear-gradient(18deg, #ffddf6 0%, #ffffff 27%)'}}
-          // !!blue  sx={{background: 'linear-gradient(28deg, #ddfdff 0%, #ffffff 37%)'}}
-            sx={{background: 'linear-gradient(28deg, #f7ddff 0%, #ffffff 30%)'}}
+           sx={{background: 'linear-gradient(28deg, #ddfdff 0%, #ffffff 37%)'}} // !!blue 
+          // !! pink  sx={{background: 'linear-gradient(28deg, #f7ddff 0%, #ffffff 30%)'}}
           />
         ) : undefined
       }
