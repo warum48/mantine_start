@@ -59,7 +59,10 @@ export function App() {
         //  to bright background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, #c9f5fa 20%)',
         // !! good - background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, #e8fdff 20%)',
         //background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #e8fdff 50% , #ede8ff 100% ) ',
-        background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #effeff 50% , #ede8ff 100% ) ',
+     //!! top  background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #effeff 50% , #ede8ff 100% ) ',
+     // background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, #f1f7e6 0%,  #e8fdff 20% ,  #effeff 50% , #ede8ff 100% ) ',
+     background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #effeff 50% , #f1e8ff 100% ) ',
+
           paddingLeft: 'calc(var(--mantine-navbar-width, 0) )', //+ 1rem
           paddingTop: 'calc(var(--mantine-header-height, 0)  + 0.5rem)', //
          // paddingRight: {{ sm: 200, lg: 300 }},
@@ -81,7 +84,8 @@ export function App() {
             width={{ sm: 280, lg: 350 }}
            // sx={{background: 'linear-gradient(38deg, #fccbf0 0%, #ffffff 37%)'}}
            // sx={{background: 'linear-gradient(18deg, #ffddf6 0%, #ffffff 27%)'}}
-            sx={{background: 'linear-gradient(28deg, #ddfdff 0%, #ffffff 37%)'}}
+          // !!blue  sx={{background: 'linear-gradient(28deg, #ddfdff 0%, #ffffff 37%)'}}
+            sx={{background: 'linear-gradient(28deg, #f7ddff 0%, #ffffff 37%)'}}
           />
         ) : undefined
       }
