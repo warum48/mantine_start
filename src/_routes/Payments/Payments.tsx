@@ -45,26 +45,26 @@ export function Payments() {
           </Group>
           <Space h="xl" />
           <Space h="xl" />
-          <Group spacing="md" position='apart'>
-          <Title2_second>История платежей</Title2_second>
-          <Group spacing="md" >
-                      <DatePickerInput
-                        //value={value} onChange={setValue}
-                        //label="С даты"
-                        placeholder="С даты"
-                        hideWeekdays
-                        locale="ru"
-                      />
-                      {/*<Divider orientation="vertical" />*/}
-                      <DatePickerInput
-                        //label="По дату"
-                        placeholder="По дату"
-                        //value={value} onChange={setValue}
-                        hideWeekdays
-                        locale="ru"
-                      />
-                      </Group>
-                    </Group>
+          <Group spacing="md" position="apart">
+            <Title2_second>История платежей</Title2_second>
+            <Group spacing="md">
+              <DatePickerInput
+                //value={value} onChange={setValue}
+                //label="С даты"
+                placeholder="С даты"
+                hideWeekdays
+                locale="ru"
+              />
+              {/*<Divider orientation="vertical" />*/}
+              <DatePickerInput
+                //label="По дату"
+                placeholder="По дату"
+                //value={value} onChange={setValue}
+                hideWeekdays
+                locale="ru"
+              />
+            </Group>
+          </Group>
           <Space h="xs" />
           <PayHistory />
         </Box>

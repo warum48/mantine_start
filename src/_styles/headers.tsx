@@ -143,14 +143,15 @@ export const Card_title = ({ children }: TChildren) => {
 }
 
 
-export const TitleLabel = ({ children }: TChildren & TAnyFields) => {
+export const TitleLabel = ({ children, ...props }: TChildren & TAnyFields) => {
   const { classes, theme } = useHeadersStyles();
 
   return (
     <Title
     // sx={{ marginBottom: '-0.5rem' }}//'.25rem' }}
+   // {...props}
     >
-      <Text className={classes.title3} component="span" inherit>
+      <Text className={classes.title3} component="span" inherit {...props}>
         {children}
       </Text>
     </Title>
