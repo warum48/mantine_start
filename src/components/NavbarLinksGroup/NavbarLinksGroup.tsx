@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.sm,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.oceanBlue[0],//theme.colors.gray[0],
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
   },
@@ -41,14 +41,17 @@ const useStyles = createStyles((theme) => ({
     }`,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.oceanBlue[0],//theme.colors.gray[0],
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
     '&.active button div div div div': {
         fontWeight: 700,
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+        borderLeft: '4px solid pink',
+        border: '4px solid pink'
       },
+      
   },
 
   level1link: {
@@ -65,16 +68,20 @@ const useStyles = createStyles((theme) => ({
     //}`,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+     // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.oceanBlue[0],
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
     '&.active ': {
       fontWeight: 700,
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+     // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+      borderRight: '3px solid #fb6eb5!important',
+    //  borderLeft: '6px solid #fb6eb5!important',
     },
     '&.active  div': {
         fontWeight: 700,
+        
        // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
        // color: theme.colorScheme === 'dark' ? theme.white : theme.black,
       },
@@ -117,8 +124,8 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link }: 
           <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
             <Group position="apart" spacing={0}>
               <Box sx={{ display: 'flex', alignItems: 'center' , paddingLeft:'0.5rem'}}>
-                <ThemeIcon variant="light" size={30}>
-                  <Icon size="1.1rem" />
+                <ThemeIcon variant="light" size={30} radius="xl" p={'.1rem'}>
+                  <Icon size="1.5rem" />
                 </ThemeIcon>
                 <Box ml="md">{label}</Box>
               </Box>

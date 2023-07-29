@@ -35,6 +35,7 @@ import {
   IconSearch,
   IconArrowRight,
   IconArrowLeft,
+  IconPhone
 } from '@tabler/icons-react';
 import { NavbarNested } from './components/NavBar/NavbarNested';
 import { Outlet } from 'react-router-dom';
@@ -108,15 +109,17 @@ export function App() {
           height={{ base: 80, md: 90 }}
           // height="auto"
           p="xl"
+          sx={{overflow:'hidden', padding:'1.25rem', background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);}'}} //  // #fce7f8  //green #d5f9ec 30%, //pink #fce6fa  //pink2 #f8c7f4, 
         >
           <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
               height: '100%',
-              justifyContent: 'space-between',
+             // justifyContent: 'space-between',
             }}
           >
+            <Box className='left' ></Box>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger
                 opened={opened}
@@ -133,15 +136,20 @@ export function App() {
               src="https://virilisgroup.ru/wp-content/themes/virilisgroup_grad/assets/img/logo_30.png"
             />
 
+
+
             <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
+            <Group spacing={0} sx={{flexGrow:1, marginLeft:'100px', background:'white', borderRadius:'100px', padding:'4px', }}><Box sx={{background:'white', borderRadius:'100px', padding:'4px', width:'50px', height:'50px'}}><IconPhone size={40} color='#e64980' /></Box>
               <Box>
-                <Title order={3} color="pink">
+                
+                <Title order={4} color="pink">
                   +7(812)424-64-74
                 </Title>
-                <Text fw={500} color="pink" fz="sm" sx={{ marginLeft: '0.33rem' }}>
+                <Text fw={500} color="pink" fz="xs" sx={{ marginLeft: '0.33rem' }}>
                   Контактный центр 24 часа
                 </Text>
               </Box>
+              </Group>
             </MediaQuery>
 
             <DemoLogIn/>
