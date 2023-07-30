@@ -75,6 +75,7 @@ const useStyles = createStyles((theme) => ({
     '&.active ': {
       fontWeight: 700,
      // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.oceanBlue[0],
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
       borderRight: '3px solid #fb6eb5!important',
     //  borderLeft: '6px solid #fb6eb5!important',

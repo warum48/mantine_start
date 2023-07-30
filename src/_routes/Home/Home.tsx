@@ -20,6 +20,7 @@ import {
 } from '@mantine/core';
 import * as React from 'react';
 import { FastCommentsCommentWidget } from 'fastcomments-react';
+import { FastCommentBlock } from '../../components/FastComment/FastCommentBlock';
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -260,7 +261,7 @@ export const Home = () => {
           </SimpleGrid>
         </Container>
       </Box>
-      <Box sx={{ borderTop: '1px solid #202020' }} mt="135px">
+     {/*} <Box sx={{ borderTop: '1px solid #202020' }} mt="135px">
         <h4>Информационная область Главной страницы содержит:</h4>
         <List size="sm">
           <List.Item>Записаться на прием/исследования/ОТМЕНИТЬ ЗАПИСЬ</List.Item>
@@ -269,7 +270,9 @@ export const Home = () => {
           <List.Item> Балансы/внести оплату или аванс</List.Item>
           <List.Item>ПОЛУЧИТЬ ОН ЛАЙН КОНСУЛЬТАЦИЮ </List.Item>
         </List>
-      </Box>
+</Box>*/}
+      <FastCommentBlock/>
+      {/*
       <Box
         // mx="xl"
         ml="-1px"
@@ -287,7 +290,7 @@ export const Home = () => {
 
           <FastCommentsCommentWidget tenantId="2Nf0TURX_Hp" key={'comm' + theme.colorScheme} />
         </Box>
-      </Box>
+      </Box> */}
     </>
   );
 };
