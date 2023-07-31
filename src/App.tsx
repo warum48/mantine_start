@@ -106,7 +106,7 @@ export function App() {
       header={
         <Header
           fixed={false}
-          height={{ base: 80, md: 90 }}
+          height={{ base: 80, md: 100 }}
           // height="auto"
           p="xl"
           sx={{overflow:'hidden', padding:'1.25rem', 

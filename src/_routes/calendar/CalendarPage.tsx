@@ -233,7 +233,7 @@ export const CalendarPage = () => {
             <Group grow>
               
               {Array.from(Array(3)).map((item: any, index: number) => (
-                <AppointmentItem timeStart={events[index].start} {...mockDoctor} />
+                <AppointmentItem timeStart={events[index].start} {...mockDoctor} key={'ap'+index}/>
               ))}
             </Group>
           </Grid.Col>

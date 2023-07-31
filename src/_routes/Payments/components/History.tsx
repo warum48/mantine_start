@@ -26,8 +26,10 @@ const theme = useMantineTheme();
         { position: '01.05.2023',  mass: 'Оплачено', symbol: '5000', name: 'Общий анализ крови ', position2: '01.01.2023',  mass2: 'Оплачено', symbol2: '5000', name2: 'Общий анализ крови - Общий анализ крови' },
       ];
 
-    const rows = elements.map((element) => (
-        <tr key={element.name}>
+    const rows = elements.map((element, index) => (
+        <tr 
+        //key={element.name} 
+        key={"tr"+index}>
           <td>{element.position}</td>
           <td>{element.name}</td>
           <td>{element.symbol}</td>

@@ -302,6 +302,7 @@ export function Appointment() {
                       <Stack spacing="xs">
                         {addressAr.slice(0, 3).map((item, index) => (
                           <Checkbox
+                          key={'adrcb'+index}
                             value={'ad' + index}
                             //label={item}
                             label={
@@ -311,13 +312,13 @@ export function Appointment() {
                                 <TextInfo>{item.address}</TextInfo>
                                 <Space h='xs'/>
                               </>
-                            }
+                            } 
                           />
                         ))}
                       </Stack>
                       <Stack spacing="xs">
                         {addressAr.slice(3, 6).map((item, index) => (
-                          <Checkbox value={'ad' + (index + 3)} label={
+                          <Checkbox key={'adrcb'+index+3}value={'ad' + (index + 3)} label={
                             <>
                               <TitleLabel>{item.name}</TitleLabel>
                               <Space h='xs'/>
@@ -375,7 +376,7 @@ export function Appointment() {
 
                   <Group>
                     {profAr.map((item: string, index: number) => (
-                      <Button variant="outline">{item}</Button>
+                      <Button variant="outline" key={'profAr'+index}>{item}</Button>
                     ))}
                   </Group>
                   <Space h="xxs" />
@@ -387,7 +388,7 @@ export function Appointment() {
 
                   <Group spacing="xs">
                     {uslAr.map((item: string, index: number) => (
-                      <Button variant="default" compact sx={{ fontWeight: 300 }}>
+                      <Button variant="default" compact sx={{ fontWeight: 300 }} key={'b_uslAr'+index}>
                         {item}
                       </Button>
                     ))}
@@ -400,7 +401,7 @@ export function Appointment() {
                   </Title>
                   <Grid>
                     {Array.from(Array(15)).map((item: any, index: number) => (
-                      <UserInfoIcons {...mockDoctor} />
+                      <UserInfoIcons key={'uii'+index} {...mockDoctor} />
                     ))}
                   </Grid>
                 </Stack>

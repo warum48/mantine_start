@@ -167,6 +167,7 @@ export function Profile() {
                 {userInfo.map((item, index) => (
                   <Group 
                   //grow
+                  key={'uinf'+index}
                   >
                     <TitleLabel>{item.name}:</TitleLabel>
                    {/* <TextInfo>{item.mock ? item.mock : '-'}</TextInfo> */}
