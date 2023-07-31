@@ -109,7 +109,9 @@ export function App() {
           height={{ base: 80, md: 90 }}
           // height="auto"
           p="xl"
-          sx={{overflow:'hidden', padding:'1.25rem', background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);}'}} //  // #fce7f8  //green #d5f9ec 30%, //pink #fce6fa  //pink2 #f8c7f4, 
+          sx={{overflow:'hidden', padding:'1.25rem', 
+          background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);'
+        }} //  // #fce7f8  //green #d5f9ec 30%, //pink #fce6fa  //pink2 #f8c7f4, 
         >
           <Box
             sx={{
