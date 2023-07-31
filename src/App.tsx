@@ -121,7 +121,9 @@ export function App() {
              // justifyContent: 'space-between',
             }}
           >
-            <Box className='left' ></Box>
+            <Box 
+            className='left' 
+            ></Box>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger
                 opened={opened}
@@ -132,16 +134,18 @@ export function App() {
               />
             </MediaQuery>
 
+<Box sx={{backgroundColor:'white', borderRadius:'100px', padding:'75px', paddingLeft:0, paddingRight:'40px'}}> 
             <Image
               sx={{ height: '100%', maxWidth: '400px', marginRight: '1.5rem' }}
               fit="contain"
               src="https://virilisgroup.ru/wp-content/themes/virilisgroup_grad/assets/img/logo_30.png"
             />
+            </Box>
 
 
 
             <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
-            <Group spacing={0} sx={{flexGrow:1, marginLeft:'100px', background:'white', borderRadius:'100px', padding:'4px', }}><Box sx={{background:'white', borderRadius:'100px', padding:'4px', width:'50px', height:'50px'}}><IconPhone size={40} color='#e64980' /></Box>
+            <Group spacing={0} sx={{flexGrow:1, marginLeft:'70px', background:'white', borderRadius:'100px', padding:'4px', }}><Box sx={{background:'white', borderRadius:'100px', padding:'4px', width:'50px', height:'50px'}}><IconPhone size={40} color='#e64980' /></Box>
               <Box>
                 
                 <Title order={4} color="pink">

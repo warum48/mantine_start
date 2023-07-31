@@ -27,6 +27,7 @@
   /*  box-shadow: 0 0 0 1px red; */
   }
   
+  /*
   .left:after {
     content: '';
     line-height: 0;
@@ -61,7 +62,7 @@
     position: absolute;
     top: -50px;
     left: -50px;
-  }
+  }*/
   
  
 
