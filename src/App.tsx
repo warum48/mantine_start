@@ -119,7 +119,8 @@ export function App() {
           sx={{
             overflow: 'hidden',
             padding: '1.25rem',
-            background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);',
+           // background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);',
+            background: 'linear-gradient(90deg, #ffffff 20% , #e7fafd 50%,  rgba(255,255,255,1) 80%);',
           }} //  // #fce7f8  //green #d5f9ec 30%, //pink #fce6fa  //pink2 #f8c7f4,
         >
           <Box
@@ -130,7 +131,7 @@ export function App() {
               justifyContent: 'space-between',
             }}
           >
-            <Box className="left"></Box>
+         {/*   <Box className="left"></Box> */}
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger
                 opened={opened}
@@ -166,22 +167,25 @@ export function App() {
 
             <MediaQuery smallerThan="xl" styles={{ display: 'none' }}>
               <Text
-                ml="100px"
+               
                 pr="100px"
                 p="md"
                 pl="xl"
+                 ml="100px"
+              //  pl="100px"
                 sx={{ 
                   //background: 'white', 
                 borderRadius: '100px', padding: '4px',
 
-                background: 'linear-gradient(90deg, #ffffff 60%,  #ffffff00 100%);', }}
+                background: 'linear-gradient(90deg,   #ffffff 60%,  #ffffff00 100%);', }}
+              //  background: 'linear-gradient(90deg, #ffffff00 ,  #ffffff 50%,  #ffffff00 100%);', }}
                 
               >
                 {' '}
                 <i>ЛИЧНЫЙ КАБИНЕТ ПОЛЬЗОВАТЕЛЯ</i>
               </Text>
             </MediaQuery>
-            <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
+            <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
               <Group
                 spacing={0}
                 ml={largeScreen ? 'auto' : '70px'} //70px
