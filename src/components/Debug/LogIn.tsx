@@ -22,6 +22,6 @@ const switchLogIn = () => {
 
   return <Button compact 
  // variant="gradient" gradient={{ from: '#038d92', to: 'lime', deg: 105 }}
-  sx={{marginLeft:'auto'}}
+ // sx={{marginLeft:'auto'}}
   onClick={switchLogIn}>{cookieToken.mednekot ? "Выход" : "Вход"}</Button> ;
 }

@@ -35,7 +35,7 @@ import {
   IconSearch,
   IconArrowRight,
   IconArrowLeft,
-  IconPhone
+  IconPhone,
 } from '@tabler/icons-react';
 import { NavbarNested } from './components/NavBar/NavbarNested';
 import { Outlet } from 'react-router-dom';
@@ -43,6 +43,7 @@ import { DemoGuestSwitcher } from './components/Debug/GuestSwitch';
 import { useCookies } from 'react-cookie';
 import { DemoLogIn } from './components/Debug/LogIn';
 import { AsideComp } from './_routes/Home/components/Aside';
+import { useMediaQuery } from '@mantine/hooks';
 //import { Logo } from './_logo';
 
 export function App() {
@@ -50,6 +51,7 @@ export function App() {
   const [cookieToken, setCookieToken, removeCookieToken] = useCookies(['mednekot']);
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
+  const largeScreen = useMediaQuery('(min-width: 88em)');
   return (
     <AppShell
       styles={{
@@ -57,22 +59,25 @@ export function App() {
           // background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
           //background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'white',
           //background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, rgba(255,255,255,1) 20%)',
-        //  to bright background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, #c9f5fa 20%)',
-        // !! good - background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, #e8fdff 20%)',
-        //background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #e8fdff 50% , #ede8ff 100% ) ',
-     //!! top  background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #effeff 50% , #ede8ff 100% ) ',
-     // background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, #f1f7e6 0%,  #e8fdff 20% ,  #effeff 50% , #ede8ff 100% ) ',
-     background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #effeff 50% , #f1e8ff 100% ) ',
+          //  to bright background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, #c9f5fa 20%)',
+          // !! good - background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%, #e8fdff 20%)',
+          //background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #e8fdff 50% , #ede8ff 100% ) ',
+          //!! top  background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #effeff 50% , #ede8ff 100% ) ',
+          // background: theme.colorScheme === 'dark' ? theme.colors.dark[9] : 'linear-gradient(232deg, #f1f7e6 0%,  #e8fdff 20% ,  #effeff 50% , #ede8ff 100% ) ',
+          background:
+            theme.colorScheme === 'dark'
+              ? theme.colors.dark[9]
+              : 'linear-gradient(232deg, rgba(242,255,240,1) 0%,  #e8fdff 20% ,  #effeff 50% , #f1e8ff 100% ) ',
 
           paddingLeft: 'calc(var(--mantine-navbar-width, 0) )', //+ 1rem
           paddingTop: 'calc(var(--mantine-header-height, 0)  + 0.5rem)', //
-         // paddingRight: {{ sm: 200, lg: 300 }},
+          // paddingRight: {{ sm: 200, lg: 300 }},
         },
       }}
       //padding='0'
 
       navbarOffsetBreakpoint="0" //sm
-      asideOffsetBreakpoint='0'//"sm"
+      asideOffsetBreakpoint="0" //"sm"
       navbar={
         //<Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
 
@@ -83,20 +88,22 @@ export function App() {
             hiddenBreakpoint="sm"
             hidden={!opened}
             width={{ sm: 280, lg: 350 }}
-           // sx={{background: 'linear-gradient(38deg, #fccbf0 0%, #ffffff 37%)'}}
-           // sx={{background: 'linear-gradient(18deg, #ffddf6 0%, #ffffff 27%)'}}
-           sx={{background: 'linear-gradient(28deg, #ddfdff 0%, #ffffff 37%)'}} // !!blue 
-          // !! pink  sx={{background: 'linear-gradient(28deg, #f7ddff 0%, #ffffff 30%)'}}
+            // sx={{background: 'linear-gradient(38deg, #fccbf0 0%, #ffffff 37%)'}}
+            // sx={{background: 'linear-gradient(18deg, #ffddf6 0%, #ffffff 27%)'}}
+            sx={{ background: 'linear-gradient(28deg, #ddfdff 0%, #ffffff 37%)' }} // !!blue
+            // !! pink  sx={{background: 'linear-gradient(28deg, #f7ddff 0%, #ffffff 30%)'}}
           />
         ) : undefined
       }
-      aside={ true ? undefined : 
-        <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-          {/*<Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+      aside={
+        true ? undefined : (
+          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+            {/*<Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
             <Text>Application sidebar</Text>
       </Aside>*/}
-      <AsideComp/>
-        </MediaQuery>
+            <AsideComp />
+          </MediaQuery>
+        )
       }
       /* footer={
         <Footer height={60} p="md" fixed={false}>
@@ -109,21 +116,21 @@ export function App() {
           height={{ base: 80, md: 100 }}
           // height="auto"
           p="xl"
-          sx={{overflow:'hidden', padding:'1.25rem', 
-          background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);'
-        }} //  // #fce7f8  //green #d5f9ec 30%, //pink #fce6fa  //pink2 #f8c7f4, 
+          sx={{
+            overflow: 'hidden',
+            padding: '1.25rem',
+            background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);',
+          }} //  // #fce7f8  //green #d5f9ec 30%, //pink #fce6fa  //pink2 #f8c7f4,
         >
           <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
               height: '100%',
-             // justifyContent: 'space-between',
+              justifyContent: 'space-between',
             }}
           >
-            <Box 
-            className='left' 
-            ></Box>
+            <Box className="left"></Box>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger
                 opened={opened}
@@ -134,33 +141,90 @@ export function App() {
               />
             </MediaQuery>
 
-<Box sx={{backgroundColor:'white', borderRadius:'100px', padding:'75px', paddingLeft:0, paddingRight:'40px'}}> 
-            <Image
-              sx={{ height: '100%', maxWidth: '400px', marginRight: '1.5rem' }}
-              fit="contain"
-              src="https://virilisgroup.ru/wp-content/themes/virilisgroup_grad/assets/img/logo_30.png"
-            />
+            <Box
+              sx={{
+                //  backgroundColor: 'white',
+                //!! borderRadius: '100px',
+                padding: '75px',
+                paddingLeft: 0,
+                paddingRight: '40px',
+                //marginTop:'-65px'
+              }}
+            >
+              <Image
+                sx={{
+                  height: '100%',
+                  maxWidth: '400px',
+                  marginRight: '1.5rem',
+                  //  marginTop:'65px'
+                  // position:'absolute'
+                }}
+                fit="contain"
+                src="https://virilisgroup.ru/wp-content/themes/virilisgroup_grad/assets/img/logo_30.png"
+              />
             </Box>
 
+            <MediaQuery smallerThan="xl" styles={{ display: 'none' }}>
+              <Text
+                ml="100px"
+                pr="100px"
+                p="md"
+                pl="xl"
+                sx={{ 
+                  //background: 'white', 
+                borderRadius: '100px', padding: '4px',
 
-
-            <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
-            <Group spacing={0} sx={{flexGrow:1, marginLeft:'70px', background:'white', borderRadius:'100px', padding:'4px', }}><Box sx={{background:'white', borderRadius:'100px', padding:'4px', width:'50px', height:'50px'}}><IconPhone size={40} color='#e64980' /></Box>
-              <Box>
+                background: 'linear-gradient(90deg, #ffffff 60%,  #ffffff00 100%);', }}
                 
-                <Title order={4} color="pink">
-                  +7(812)424-64-74
-                </Title>
-                <Text fw={500} color="pink" fz="xs" sx={{ marginLeft: '0.33rem' }}>
-                  Контактный центр 24 часа
-                </Text>
-              </Box>
+              >
+                {' '}
+                <i>ЛИЧНЫЙ КАБИНЕТ ПОЛЬЗОВАТЕЛЯ</i>
+              </Text>
+            </MediaQuery>
+            <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
+              <Group
+                spacing={0}
+                ml={largeScreen ? 'auto' : '70px'} //70px
+               // mr={largeScreen ? 'auto' : '0'} 
+               mr='auto'
+                pr="xl"
+                //grow={1}
+                sx={{
+                 //  flexGrow: 1,
+                  // marginLeft: '70px',
+                  // marginLeft: {xs:'70', xl:0},
+                  //background: 'white',
+                  background: 'linear-gradient(90deg, #ffffff 60%,  #ffffff00 100%);',
+                  borderRadius: '100px',
+                  padding: '4px',
+                  
+                }}
+              >
+                <Box
+                  sx={{
+                    background: 'white',
+                    borderRadius: '100px',
+                    padding: '4px',
+                    width: '50px',
+                    height: '50px',
+                  }}
+                >
+                  <IconPhone size={40} color="#e64980" />
+                </Box>
+                <Box>
+                  <Title order={4} color="pink">
+                    +7(812)424-64-74
+                  </Title>
+                  <Text fw={500} color="pink" fz="xs" sx={{ marginLeft: '0.33rem' }}>
+                    Контактный центр 24 часа
+                  </Text>
+                </Box>
               </Group>
             </MediaQuery>
 
-            <DemoLogIn/>
+            <DemoLogIn />
 
-{/*
+            {/*
             <Box>
               <u>Вход</u> / <u>Регистрация</u>
             </Box>
@@ -181,12 +245,12 @@ export function App() {
     >
       <Box
         mx="xl"
-       // mx={{lg:"3rem", md:'xl'}}
+        // mx={{lg:"3rem", md:'xl'}}
         //my="-0.125rem"
         my="xl"
         pb="xl"
-        mih='80vh'
-       // sx={{background: 'linear-gradient(189deg, rgba(169,242,155,0.43323266806722693) 0%, rgba(255,255,255,0) 100%);}'}}
+        mih="80vh"
+        // sx={{background: 'linear-gradient(189deg, rgba(169,242,155,0.43323266806722693) 0%, rgba(255,255,255,0) 100%);}'}}
       >
         <Outlet />
       </Box>
