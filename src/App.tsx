@@ -90,7 +90,7 @@ export function App() {
             width={{ sm: 280, lg: 350 }}
             // sx={{background: 'linear-gradient(38deg, #fccbf0 0%, #ffffff 37%)'}}
             // sx={{background: 'linear-gradient(18deg, #ffddf6 0%, #ffffff 27%)'}}
-            sx={{ background: 'linear-gradient(28deg, #ddfdff 0%, #ffffff 37%)' }} // !!blue
+            sx={{ background: 'linear-gradient(28deg, #e2f9fa 0%, #ffffff 37%)' }} // !!blue
             // !! pink  sx={{background: 'linear-gradient(28deg, #f7ddff 0%, #ffffff 30%)'}}
           />
         ) : undefined
@@ -120,7 +120,7 @@ export function App() {
             overflow: 'hidden',
             padding: '1.25rem',
            // background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);',
-            background: 'linear-gradient(90deg, #ffffff 20% , #e7fafd 50%,  rgba(255,255,255,1) 80%);',
+            background: 'linear-gradient(90deg, #ffffff 0% , #e7fafd 50%,  rgba(255,255,255,1) 80%);',
           }} //  // #fce7f8  //green #d5f9ec 30%, //pink #fce6fa  //pink2 #f8c7f4,
         >
           <Box
@@ -131,7 +131,7 @@ export function App() {
               justifyContent: 'space-between',
             }}
           >
-         {/*   <Box className="left"></Box> */}
+            <Box className="left"></Box> 
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger
                 opened={opened}
