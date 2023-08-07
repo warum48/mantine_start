@@ -46,7 +46,12 @@
   
   .right {
     margin-left: 60px;
-    width: 100px;
+    height: 40px;
+    position: relative;
+    display:flex;
+    align-items: center;
+    background: linear-gradient(90deg,   #ffffff 60%,  #ffffff00 100%);
+    /*width: 100px; */
   }
   
   .right:before {
@@ -55,13 +60,14 @@
     font-size: 0;
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-bottom: 100px solid #000;
-    border-left: 50px solid transparent;
-    border-right: 0px solid #000;
+    border-top: 20px solid transparent;
+    border-bottom: 40px solid #ffffff;
+    border-left: 20px solid transparent;
+    border-right: 0px solid #ffffff;
+    
     position: absolute;
-    top: -50px;
-    left: -50px;
+    top: -20px;
+    left: -20px;
   }/**/
   
  

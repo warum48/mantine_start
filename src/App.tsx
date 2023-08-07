@@ -120,7 +120,8 @@ export function App() {
             overflow: 'hidden',
             padding: '1.25rem',
            // background: 'linear-gradient(164deg, #d3f8ff,  rgba(255,255,255,1) 70%);',
-            background: 'linear-gradient(90deg, #ffffff 0% , #e7fafd 50%,  rgba(255,255,255,1) 80%);',
+          //  background: 'linear-gradient(90deg, #ffffff 0% , #e7fafd 50%,  rgba(255,255,255,1) 80%);',
+            background: 'linear-gradient(90deg, #ffffff 0% , #eefcfe 30%,  rgba(255,255,255,1) 80%);',
           }} //  // #fce7f8  //green #d5f9ec 30%, //pink #fce6fa  //pink2 #f8c7f4,
         >
           <Box
@@ -165,9 +166,9 @@ export function App() {
               />
             </Box>
 
-            <MediaQuery smallerThan="xl" styles={{ display: 'none' }}>
+            <MediaQuery smallerThan="xl" styles={{ display: 'none !important' /*hide flex*/ }}> 
               <Text
-               
+               className='right'
                 pr="100px"
                 p="md"
                 pl="xl"
@@ -175,7 +176,7 @@ export function App() {
               //  pl="100px"
                 sx={{ 
                   //background: 'white', 
-                borderRadius: '100px', padding: '4px',
+             //   borderRadius: '100px', padding: '4px',
 
                 background: 'linear-gradient(90deg,   #ffffff 60%,  #ffffff00 100%);', }}
               //  background: 'linear-gradient(90deg, #ffffff00 ,  #ffffff 50%,  #ffffff00 100%);', }}
